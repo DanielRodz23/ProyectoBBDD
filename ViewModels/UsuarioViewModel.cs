@@ -12,11 +12,16 @@ namespace ProyectoBBDD.ViewModels
     public class UsuarioViewModel : INotifyPropertyChanged
     {
         public Usuarios Usuario { get; set; } = new Usuarios();
-        UsuarioCatalogo usuarioCatalogo { get; set; }
+        UsuarioCatalogo usuarioCatalogo = new UsuarioCatalogo();
 
         public UsuarioViewModel()
         {
-            Usuario = usuarioCatalogo.GetUsuarios().FirstOrDefault();
+            var x = usuarioCatalogo.GetUsuarios().FirstOrDefault();
+            if (x != null)
+            {
+                Usuario = x;
+            }
+            Actualizar();
         }
         private void Actualizar(string prop = null)
         {
