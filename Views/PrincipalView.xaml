@@ -11,6 +11,6 @@
         <vm:PrincipalViewModel></vm:PrincipalViewModel>
     </Window.DataContext>
     <DockPanel>
-        <ContentControl Content="{Binding vista}"/>
+        <ContentControl Content="{Binding Modo}"/>
     </DockPanel>
 </Window>
