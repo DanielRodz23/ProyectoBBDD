@@ -17,5 +17,7 @@ public partial class Productos
 
     public int Stock { get; set; }
 
+    public string? Estado { get; set; }
+
     public virtual ICollection<Carrito> Carrito { get; set; } = new List<Carrito>();
 }

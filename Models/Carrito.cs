@@ -11,6 +11,8 @@ public partial class Carrito
 
     public int IdUsuario { get; set; }
 
+    public int Cantidad { get; set; }
+
     public virtual Productos IdProductoNavigation { get; set; } = null!;
 
     public virtual Usuarios IdUsuarioNavigation { get; set; } = null!;

@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ProyectoBBDD.Models;
 
-public partial class FreedbClienteContext : DbContext
+public partial class TiendaContext : DbContext
 {
-    public FreedbClienteContext()
+    public TiendaContext()
     {
     }
 
-    public FreedbClienteContext(DbContextOptions<FreedbClienteContext> options)
+    public TiendaContext(DbContextOptions<TiendaContext> options)
         : base(options)
     {
     }
@@ -25,7 +25,7 @@ public partial class FreedbClienteContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("server=sql.freedb.tech;user=freedb_FirtsUser;database=freedb_cliente;password=7Z%@TYfXYnxjs4b", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.28-mysql"));
+        => optionsBuilder.UseMySql("server=26.252.149.4;user=ProyePINDAN;password=PROYEPINDAN$123;database=Tienda", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.29-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -36,6 +36,8 @@ public partial class FreedbClienteContext : DbContext
         modelBuilder.Entity<Carrito>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("carrito");
 
             entity.HasIndex(e => e.IdProducto, "fkIdProducto_idx");
 
@@ -59,6 +61,7 @@ public partial class FreedbClienteContext : DbContext
             entity.ToTable("productos");
 
             entity.Property(e => e.Descripcion).HasColumnType("text");
+            entity.Property(e => e.Estado).HasMaxLength(45);
             entity.Property(e => e.Nombre).HasMaxLength(50);
             entity.Property(e => e.Precio).HasPrecision(6, 2);
         });
