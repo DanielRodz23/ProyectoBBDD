@@ -29,9 +29,14 @@ namespace ProyectoBBDD.Catalogos
             {
                 var us = context.Usuarios.Include(x => x.IdrolNavigation).FirstOrDefault(x => x.Nombre == nombre);
                 if (us != null)
-                    //EstablecerTipoUsuario(us);
+                    EstablecerTipoUsuario(us);
             }
             return y;
+        }
+
+        private void EstablecerTipoUsuario(Usuarios us)
+        {
+            throw new NotImplementedException();
         }
     }
 }
