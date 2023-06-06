@@ -14,5 +14,9 @@ namespace ProyectoBBDD.Catalogos
         {
             return context.Usuarios.OrderBy(x=>x.Nombre);
         }
+        public Usuarios? GetUsuario(string nombre)
+        {
+            return context.Usuarios.FirstOrDefault(x => x.Nombre == nombre);
+        }
     }
 }
