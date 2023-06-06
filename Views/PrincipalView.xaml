@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="PrincipalView" Height="450" Width="800">
     <Window.DataContext>
-        
+        <vm:CarritoViewModel></vm:CarritoViewModel>
     </Window.DataContext>
     <DockPanel>
         <ContentControl Content="{Binding }"/>
