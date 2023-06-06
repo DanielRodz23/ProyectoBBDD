@@ -3,7 +3,9 @@ using ProyectoBBDD.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ProyectoBBDD.Catalogos
@@ -36,7 +38,13 @@ namespace ProyectoBBDD.Catalogos
 
         private void EstablecerTipoUsuario(Usuarios us)
         {
-            throw new NotImplementedException();
+            GenericIdentity user = new GenericIdentity(us.Nombre);
+            if (us != null)
+            {
+                string[] roles = new string[] { us.IdrolNavigation.Nombre };
+                GenericPrincipal usprincipal = new GenericPrincipal(user, roles);
+                Thread.CurrentPrincipal = usprincipal;
+            }
         }
     }
 }
