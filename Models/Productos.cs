@@ -17,7 +17,11 @@ public partial class Productos
 
     public int Stock { get; set; }
 
-    public string? Estado { get; set; }
+    public ulong Estado { get; set; }
+
+    public string Imagen { get; set; } = null!;
 
     public virtual ICollection<Carrito> Carrito { get; set; } = new List<Carrito>();
+
+    public virtual ICollection<Registrocompras> Registrocompras { get; set; } = new List<Registrocompras>();
 }

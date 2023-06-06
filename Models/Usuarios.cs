@@ -16,4 +16,6 @@ public partial class Usuarios
     public virtual ICollection<Carrito> Carrito { get; set; } = new List<Carrito>();
 
     public virtual Roles IdrolNavigation { get; set; } = null!;
+
+    public virtual ICollection<Registrocompras> Registrocompras { get; set; } = new List<Registrocompras>();
 }
