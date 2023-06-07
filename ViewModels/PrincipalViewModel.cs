@@ -78,7 +78,7 @@ namespace ProyectoBBDD.ViewModels
         private void CerrarSesion()
         {
             Usuario = new();
-            Modo=ModoVistas.LoginView
+            Modo = ModoVistas.LoginView;
             Actualizar();
         }
 
