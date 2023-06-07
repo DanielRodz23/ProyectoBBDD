@@ -13,7 +13,8 @@ namespace ProyectoBBDD.Catalogos
     {
         TiendaContext context = new TiendaContext();
         Regex regular;
-        string patronsku = @"[0-9]*$";
+        string patronskuystock = @"[0-9]*$";
+        string patronurl = @"^(https?://)?(www\.)?\S+\.(jpg|jpeg|png|gif)$";
         public IEnumerable<Productos> GetProductos()
         {
             return context.Productos.OrderBy(x => x.Nombre);
@@ -36,7 +37,7 @@ namespace ProyectoBBDD.Catalogos
         }
         public bool Validar(Productos p, out List<string> errores)
         {
-            regular=new Regex(patronsku);
+            regular=new Regex(patronskuystock);
 
             errores = new List<string>();
             if (p.Sku == 0)
@@ -55,23 +56,14 @@ namespace ProyectoBBDD.Catalogos
                 errores.Add("Debe ingresar una descripcion");
             if (p.Imagen == null)
                 errores.Add("Debe ingresar una imagen de producto");
-
-
-            //if (string.IsNullOrWhiteSpace(u.Correo))
-            //    errores.Add("Debes ingresar un correo.");
-            //if (u.Correo != null)
-            //{
-            //    regular = new Regex(patroncorreo);
-            //    if (!regular.IsMatch(u.Correo))
-            //        errores.Add("Verifica que el correo no contenga " +
-            //            "caracteres especiales y que el " +
-            //            "dominio sea uno de estos: " +
-            //            "gmail,outlook,yahoo,hotmail,itesrc,rcarbonifera y " +
-            //            "con un dominio de nivel superior como:com,org,edu,tecnm");
-
-            ////}
-            //if (context.Usuarios.Any(x => x.Correo == u.Correo && x.Id != u.Id))
-            //    errores.Add("El correo ya esta registrado a otro usuario.");
+            if (p.Imagen != null)
+            {
+                regular = new Regex(patronurl);
+                if (!regular.IsMatch(p.Imagen))
+                    errores.Add("Debe ingresar un aurl de imagen valida");
+            }
+            if (p.Stock == 0)
+                errores.Add("Debe ingresar como minimo 1 unidad de stock");
             if (errores.Count() == 0)
             {
                 return true;
