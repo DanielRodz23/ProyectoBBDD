@@ -1,5 +1,4 @@
 ﻿using GalaSoft.MvvmLight.Command;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ProyectoBBDD.Catalogos;
 using ProyectoBBDD.Models;
@@ -113,12 +112,12 @@ namespace ProyectoBBDD.ViewModels
                 Error = "";
             }
         }
-        [Authorize(Roles = "Cliente")]
+        //[Authorize(Roles = "Cliente")]
         private void AccionesUsuarioCliente()
         {
             throw new NotImplementedException();
         }
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         private void AccionesUsuarioAdministrador()
         {
             throw new NotImplementedException();

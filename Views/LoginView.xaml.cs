@@ -24,5 +24,10 @@ namespace ProyectoBBDD.Views
         {
             InitializeComponent();
         }
+
+        private void pwb1_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
