@@ -34,9 +34,9 @@ namespace ProyectoBBDD.ViewModels
         {
             VerRegistrarProductoCommand = new RelayCommand(VerRegistrarProducto);
             RegistrarProductoCommand = new RelayCommand(RegistrarProducto);
-            VerEliminarProductoCommand = new RelayCommand(VerEliminarProducto);
+            VerEliminarProductoCommand = new RelayCommand<int>(VerEliminarProducto);
             EliminarProductoCommand = new RelayCommand(EliminarProducto);
-            VerEditarProductoCommand = new RelayCommand(VerEditarProducto);
+            VerEditarProductoCommand = new RelayCommand<int>(VerEditarProducto);
             EditarProductoCommand = new RelayCommand(EditarProducto);
             CancelarCommand = new RelayCommand(Cancelar);
             CargarProductos();
@@ -51,22 +51,50 @@ namespace ProyectoBBDD.ViewModels
 
         private void EditarProducto()
         {
-            throw new NotImplementedException();
+            if (producto != null)
+            {
+                if (productosCatalogo.Validar(producto, out List<string> errores))
+                {
+                    productosCatalogo.Editar(producto);
+
+                    producto = new();
+                    Modo = ModoVistas.VerAdministrador;
+                    Actualizar();
+                }
+                else
+                {
+
+                    foreach (var item in errores)
+                    {
+                        Error = $"{Error} {item} {Environment.NewLine}";
+                    }
+                    Actualizar();
+                }
+                Error = "";
+            }
         }
 
-        private void VerEditarProducto()
+        private void VerEditarProducto(int id)
         {
+            producto= (Productos?)productosCatalogo.GetProductoId(id);
             Modo = ModoVistas.VerEditarProducto;
             Actualizar();
         }
 
         private void EliminarProducto()
         {
-            
+            if(producto!=null)
+            {
+                productosCatalogo.Eliminar(producto);
+                CargarProductos();
+                Modo = ModoVistas.VerAdministrador;
+                Actualizar();
+            }
         }
 
-        private void VerEliminarProducto()
+        private void VerEliminarProducto(int id)
         {
+            producto = (Productos?)productosCatalogo.GetProductoId(id);
             Modo=ModoVistas.VerEliminarProducto;
             Actualizar();
         }

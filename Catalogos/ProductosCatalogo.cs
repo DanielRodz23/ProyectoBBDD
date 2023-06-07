@@ -19,6 +19,9 @@ namespace ProyectoBBDD.Catalogos
         {
             return context.Productos.OrderBy(x => x.Nombre);
         }
+        public IEnumerable<Productos> GetProductoId(int id) {
+            return context.Productos.Where(x=>x.Id == id);
+        }
         public void Agregar(Productos p)
         {
             context.Add(p);

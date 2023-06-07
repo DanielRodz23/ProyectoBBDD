@@ -87,10 +87,10 @@ namespace ProyectoBBDD.ViewModels
         {
             if (Usuario != null)
             {
-                var inicio = catalagous.spIniciarSesion(Usuario.Nombre, Usuario.Contrasena);
+                var inicio = catalagous.spIniciarSesion(Usuario.Correo, Usuario.Contrasena);
                 if (inicio == 1)
                 {
-                    var usuario = catalagous.GetUsuario(Usuario.Nombre);
+                    var usuario = catalagous.GetUsuario(Usuario.Correo);
                     Usuario = usuario;
                     if (Thread.CurrentPrincipal != null)
                     {
