@@ -1,7 +1,9 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ProyectoBBDD.Catalogos;
 using ProyectoBBDD.Models;
+using ProyectoBBDD.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,8 +20,7 @@ namespace ProyectoBBDD.ViewModels
     public class PrincipalViewModel: INotifyPropertyChanged
     {
         public Usuarios? Usuario { get; set; }
-        public UserControl vista { get; set; }
-        public string Modo { get; set; }
+        public ModoVistas Modo { get; set; }
         //LoginView view;
         public string Error { get; set; }
         public ICommand IniciarSesionCommand { get; set; }
@@ -42,7 +43,8 @@ namespace ProyectoBBDD.ViewModels
             //};
 
             //Vista = view;
-            //Actualizar();
+            Modo = ModoVistas.LoginView;
+            Actualizar();
         }
 
         private void RegistrarUsuario()
@@ -54,7 +56,7 @@ namespace ProyectoBBDD.ViewModels
                     catalagous.Agregar(Usuario);
                    
                     Usuario = new();
-                  
+                    Modo = ModoVistas.LoginView;
                     Actualizar();
                 }
                 else
@@ -76,7 +78,7 @@ namespace ProyectoBBDD.ViewModels
         private void CerrarSesion()
         {
             Usuario = new();
-            
+            Modo=ModoVistas.LoginView
             Actualizar();
         }
 
@@ -112,15 +114,17 @@ namespace ProyectoBBDD.ViewModels
                 Error = "";
             }
         }
-        //[Authorize(Roles = "Cliente")]
+        [Authorize(Roles = "Cliente")]
         private void AccionesUsuarioCliente()
         {
-            throw new NotImplementedException();
+            Modo = ModoVistas.VerCliente;
+            Actualizar();
         }
-        //[Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador")]
         private void AccionesUsuarioAdministrador()
         {
-            throw new NotImplementedException();
+            Modo = ModoVistas.VerAdministrador;
+            Actualizar();
         }
 
         private void VerRegistrarUsuario()
