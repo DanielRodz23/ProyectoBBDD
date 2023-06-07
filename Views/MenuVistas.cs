@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace ProyectoBBDD.Views
 {
-    public enum ModoVistas {LoginView, VerAdministrador, VerCliente,VerRegistrarUsuario }
+    public enum ModoVistas {LoginView, VerAdministrador, VerCliente,VerRegistrarUsuario,VerRegistrarProducto,VerEliminarProducto,VerEditarProducto }
 }
