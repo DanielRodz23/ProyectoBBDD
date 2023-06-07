@@ -111,9 +111,12 @@ public partial class TiendaContext : DbContext
 
             entity.ToTable("usuarios");
 
+            entity.HasIndex(e => e.Correo, "Correo_UNIQUE").IsUnique();
+
             entity.HasIndex(e => e.Idrol, "fkIdrol_idx");
 
             entity.Property(e => e.Contrasena).HasMaxLength(256);
+            entity.Property(e => e.Correo).HasMaxLength(90);
             entity.Property(e => e.Nombre).HasMaxLength(50);
 
             entity.HasOne(d => d.IdrolNavigation).WithMany(p => p.Usuarios)

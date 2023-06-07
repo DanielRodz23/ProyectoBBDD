@@ -13,6 +13,8 @@ public partial class Usuarios
 
     public int Idrol { get; set; }
 
+    public string Correo { get; set; } = null!;
+
     public virtual ICollection<Carrito> Carrito { get; set; } = new List<Carrito>();
 
     public virtual Roles IdrolNavigation { get; set; } = null!;
