@@ -130,7 +130,7 @@ namespace ProyectoBBDD.ViewModels
         private void VerRegistrarUsuario()
         {
             Usuario = new();
-            
+            Modo = ModoVistas.VerRegistrarUsuario;
             Actualizar();
         }
         public void Actualizar(string? p = null)
