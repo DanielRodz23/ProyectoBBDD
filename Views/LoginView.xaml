@@ -10,8 +10,8 @@
         <TextBlock Margin="0,0,0,50"
                    FontSize="40"
                    HorizontalAlignment="Center">Iniciar sesión</TextBlock>
-        <Label>Correo electrónico:</Label>
-        <TextBox Text="{Binding Usuario.Correo}"></TextBox>
+        <Label>Nombre del usuario:</Label>
+        <TextBox Text="{Binding Usuario.Nombre}"></TextBox>
         <Label>Contraseña:</Label>
         <TextBox Visibility="Collapsed"
                  Name="txtPassword" 

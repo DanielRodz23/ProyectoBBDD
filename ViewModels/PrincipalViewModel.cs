@@ -49,12 +49,13 @@ namespace ProyectoBBDD.ViewModels
 
         private void RegistrarUsuario()
         {
+
             if (Usuario != null)
             {
                 if (catalagous.Validar(Usuario, out List<string> errores))
                 {
                     catalagous.Agregar(Usuario);
-                   
+
                     Usuario = new();
                     Modo = ModoVistas.LoginView;
                     Actualizar();

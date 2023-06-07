@@ -13,23 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProyectoBBDD.Views
+namespace ProyectoBBDD.Views.AdmViews
 {
     /// <summary>
-    /// Lógica de interacción para LoginView.xaml
+    /// Lógica de interacción para VerAdministrador.xaml
     /// </summary>
-    public partial class LoginView : UserControl
+    public partial class VerAdministrador : UserControl
     {
-        public LoginView()
+        public VerAdministrador()
         {
             InitializeComponent();
-        }
-
-        private void pwb1_LostFocus(object sender, RoutedEventArgs e)
-        {
-            txtPassword.Text = "";
-            txtPassword.Text = pwb1.Password;
-            pwb1.Clear();
         }
     }
 }
