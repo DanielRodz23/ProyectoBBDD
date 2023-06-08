@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:ProyectoBBDD.Views"
              mc:Ignorable="d">
     <StackPanel Margin="30">
@@ -10,7 +11,8 @@
                    FontSize="40"
                    HorizontalAlignment="Center">Iniciar sesión</TextBlock>
         <Label>Correo electrónico:</Label>
-        <TextBox x:Name="txtCorreo" Text="{Binding Usuario.Correo}"></TextBox>
+        <TextBox x:Name="txtCorreo" Text="{Binding Usuario.Correo}"
+                   materialDesign:TextFieldAssist.HasClearButton="True"></TextBox>
         <Label>Contraseña:</Label>
         <TextBox Visibility="Collapsed"
                  Name="txtPassword" 
@@ -35,7 +37,9 @@
         <Button Click="Button_Click"
                 Command="{Binding IniciarSesionCommand}"
                 Margin="20"
-                Padding="20,10"
+                Padding="40,10"
+                Foreground="White"
+                Height="50"
                 Content="Iniciar Sesión" 
                 HorizontalAlignment="Center" 
                 IsDefault="True">

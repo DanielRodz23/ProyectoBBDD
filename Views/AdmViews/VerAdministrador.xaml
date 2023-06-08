@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:ProyectoBBDD.Views.AdmViews"
              xmlns:vm="clr-namespace:ProyectoBBDD.ViewModels"
              mc:Ignorable="d">
-    <UserControl.DataContext>
+    <!--<UserControl.DataContext>
         <vm:AdministradorViewModel></vm:AdministradorViewModel>
-    </UserControl.DataContext>
+    </UserControl.DataContext>-->
     
     <StackPanel>
         <!--Titulo-->

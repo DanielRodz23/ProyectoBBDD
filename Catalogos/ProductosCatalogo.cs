@@ -51,9 +51,9 @@ namespace ProyectoBBDD.Catalogos
                 errores.Add("No has introducido el nombre.");
             if (p.Nombre != null && p.Nombre.Length > 80)
                 errores.Add("Los caracteres permitidos para el nombre es de 80.");
-            if (p.Precio == null)
+            if (p.Precio ==0)
                 errores.Add("Debe ingresar un Precio.");
-            if (p.Precio != null && p.Precio > 9999.99m)
+            if (p.Precio != 0 && p.Precio > 9999.99m)
                 errores.Add("El Precio que ingreso es demasiado grande");
             if (p.Descripcion == null)
                 errores.Add("Debe ingresar una descripcion");

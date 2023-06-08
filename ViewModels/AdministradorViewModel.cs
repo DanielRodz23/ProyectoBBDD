@@ -17,6 +17,7 @@ namespace ProyectoBBDD.ViewModels
 {
     public class AdministradorViewModel : INotifyPropertyChanged
     {
+        //public PrincipalViewModel Principal { get; set; } = new PrincipalViewModel();
         ProductosCatalogo productosCatalogo = new ProductosCatalogo();
         public Productos? producto { get; set; }
         public string Error { get; set; } = "";
@@ -39,6 +40,7 @@ namespace ProyectoBBDD.ViewModels
             VerEditarProductoCommand = new RelayCommand<int>(VerEditarProducto);
             EditarProductoCommand = new RelayCommand(EditarProducto);
             CancelarCommand = new RelayCommand(Cancelar);
+            Modo = ModoVistas.VerAdministrador;
             CargarProductos();
             Actualizar();
         }
@@ -129,6 +131,7 @@ namespace ProyectoBBDD.ViewModels
         {
             producto = new();
             Modo=ModoVistas.VerRegistrarProducto;
+            //Principal.Modo = ModoVistas.VerRegistrarProducto;
             Actualizar();
         }
 

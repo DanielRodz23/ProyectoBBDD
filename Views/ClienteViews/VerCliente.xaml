@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProyectoBBDD.Views.ClienteViews"
              xmlns:vm="clr-namespace:ProyectoBBDD.ViewModels"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
@@ -15,7 +16,7 @@
         <Border DockPanel.Dock="Top" Height="80" Background="LightBlue" VerticalAlignment="Top">
             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Este es el titulo" Foreground="White" FontSize="50"></TextBlock>
         </Border>
-        
+
         <!--Aqui empieza el ScrollViewer-->
         <ScrollViewer Height="600" Background="Aqua" BorderBrush="{x:Null}">
             <ItemsControl ItemsSource="{Binding productos}">
@@ -26,8 +27,14 @@
                                 <Setter Property="TextBlock.Foreground" Value="Red"></Setter>
                             </DataTrigger>
                         </DataTemplate.Triggers>
-                        <DockPanel Margin="0,10,0,0">
-                            <Border x:Name="brdBorder" CornerRadius="10" Margin="5,0,0,0">
+                        <Grid Margin="0,10,0,0" Height="120"
+                              Width="auto">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".3*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width=".3*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border x:Name="brdBorder" CornerRadius="10" Margin="5,0,0,0" Grid.ColumnSpan="3">
                                 <Border.Style>
                                     <Style TargetType="Border">
                                         <Setter Property="Background" Value="LightBlue"></Setter>
@@ -37,48 +44,78 @@
                                             <DataTrigger Binding="{Binding Estado}" Value="0">
                                                 <Setter Property="Background" Value="White"/>
                                                 <Setter Property="BorderBrush" Value="Red"/>
-                                                <Setter Property="IsEnabled" Value="False"/>
+
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
                                 </Border.Style>
-                                <StackPanel Orientation="Horizontal">
-                                    <WrapPanel Width="900" Orientation="Horizontal">
-                                        <WrapPanel.Resources>
-                                            <Style TargetType="TextBlock">
-                                                <Setter Property="VerticalAlignment" Value="Center"/>
-                                            </Style>
-                                        </WrapPanel.Resources>
-                                        <Image Source="{Binding Imagen}" Width="120" Stretch="Uniform" Height="100" Margin="30,10,100,10"/>
-                                        <TextBlock Margin="10">
+                            </Border>
+                            <Image Grid.Column="0" Source="{Binding Imagen}"
+                                           Width="auto" Stretch="Uniform" 
+                                           Height="auto" Margin="30,10,100,10"
+                                           />
+                            <WrapPanel Grid.Column="1" Orientation="Horizontal">
+                                <WrapPanel.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                    </Style>
+                                </WrapPanel.Resources>
+                                <TextBlock Margin="10">
                                     <Run Text="Sku:" FontWeight="Bold"></Run>
                                     <Run Text="{Binding Sku}"/>
-                                        </TextBlock>
-                                        <TextBlock Margin="10">
+                                </TextBlock>
+                                <TextBlock Margin="10">
                                     <Run Text="Nombre:" FontWeight="Bold"></Run>
                                     <Run Text="{Binding Nombre}"/>
-                                        </TextBlock>
-                                        <TextBlock Margin="10">
+                                </TextBlock>
+                                <TextBlock Margin="10">
                                     <Run Text="Precio:" FontWeight="Bold"></Run>
                                     <Run Text="$"/><Run Text="{Binding Precio}"/>
-                                        </TextBlock>
-                                        <TextBlock Margin="10">
-                                    <Run Text="Descripción:" FontWeight="Bold"></Run>
-                                    <Run  Text="{Binding Descripcion}"/>
-                                        </TextBlock>
-                                        <TextBlock Margin="10">
+                                </TextBlock>
+                                <TextBlock Margin="10">
                                     <Run Text="Stock:" FontWeight="Bold"></Run>
                                     <Run Text="{Binding Stock}"/>
-                                        </TextBlock>
-                                    </WrapPanel>
-                                    <StackPanel DockPanel.Dock="Right" Margin="0,0,0,0" VerticalAlignment="Center" Orientation="Vertical">
-                                        <Button Width="100" Content="Accion"></Button>
-                                        <Button Width="100" Content="Accion"></Button>
-                                        <Button Width="100" Content="Accion"></Button>
-                                    </StackPanel>
-                                </StackPanel>
-                            </Border>
-                        </DockPanel>
+                                </TextBlock>
+                                <TextBlock TextWrapping="Wrap" Margin="10"
+                                                   TextAlignment="Justify">
+                                    <Run Text="Descripción:" FontWeight="Bold"></Run>
+                                    <Run  Text="{Binding Descripcion}"/>
+                                </TextBlock>
+                            </WrapPanel>
+                            <Grid    Grid.Column="2" 
+                                        DockPanel.Dock="Right" 
+                                        Margin="0,0,0,0" 
+                                     VerticalAlignment="Center"  >
+                          
+                                <StackPanel 
+                                     >
+                                    <Button
+  Style="{StaticResource MaterialDesignFloatingActionSecondaryDarkButton}"
+  ToolTip="MaterialDesignFloatingActionSecondaryDarkButton"
+                                        Width="40" Height="40">
+                                        <materialDesign:PackIcon
+    Kind="Plus"
+    Height="30"
+    Width="30" />
+                                    </Button>
+                                    <Button Width="100" Content="Accion" Margin="0,3"></Button>
+                                    <Button Width="100" Content="Accion" Margin="0,3"></Button>
+                            </StackPanel>
+                                <Border Background="Transparent">
+                                    <Border.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="Visibility" Value="Hidden" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Estado}" Value="0">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Resources>
+
+                                </Border>
+                            </Grid>
+                        </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

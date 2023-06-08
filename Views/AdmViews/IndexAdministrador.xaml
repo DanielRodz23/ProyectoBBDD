@@ -9,9 +9,9 @@
              xmlns:vw="clr-namespace:ProyectoBBDD.Views"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
-        <vm:PrincipalViewModel></vm:PrincipalViewModel>
+        <vm:AdministradorViewModel></vm:AdministradorViewModel>
     </UserControl.DataContext>
-    <DockPanel>
+    <Grid>
         <ContentControl>
             <ContentControl.Resources>
                 <local:VerAdministrador x:Key="verAdministrador"></local:VerAdministrador>
@@ -19,9 +19,7 @@
             </ContentControl.Resources>
             <ContentControl.Style>
                 <Style TargetType="ContentControl">
-                    <Setter Property="Content" Value="{StaticResource verAdministrador}"></Setter>
                     <Style.Triggers>
-                        
                         <DataTrigger Binding="{Binding Modo}" Value="{x:Static vw:ModoVistas.VerAdministrador}">
                             <Setter Property="Content" Value="{StaticResource verAdministrador}"/>
                         </DataTrigger>
@@ -32,5 +30,5 @@
                 </Style>
             </ContentControl.Style>
         </ContentControl>
-    </DockPanel>
+    </Grid>
 </UserControl>

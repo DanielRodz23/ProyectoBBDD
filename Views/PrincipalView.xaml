@@ -34,6 +34,7 @@
                         <DataTrigger Binding="{Binding Modo}" Value="{x:Static local:ModoVistas.VerRegistrarUsuario}">
                             <Setter Property="Content" Value="{StaticResource VerRegistrarUsuario}"/>
                         </DataTrigger>
+                       
                         
                     </Style.Triggers>
                 </Style>
