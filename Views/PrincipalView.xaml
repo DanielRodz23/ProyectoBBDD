@@ -8,7 +8,7 @@
         xmlns:AdmViews="clr-namespace:ProyectoBBDD.Views.AdmViews"
         xmlns:ClientViews="clr-namespace:ProyectoBBDD.Views.ClienteViews"
         mc:Ignorable="d"
-        Title="PrincipalView" Height="450" Width="800">
+        Title="PrincipalView" WindowState="Maximized">
     <Window.DataContext>
         <vm:PrincipalViewModel></vm:PrincipalViewModel>
     </Window.DataContext>

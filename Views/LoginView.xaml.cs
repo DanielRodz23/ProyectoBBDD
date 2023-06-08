@@ -25,7 +25,7 @@ namespace ProyectoBBDD.Views
             InitializeComponent();
         }
 
-        private void pwb1_LostFocus(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             txtPassword.Text = "";
             txtPassword.Text = pwb1.Password;

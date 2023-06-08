@@ -4,22 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProyectoBBDD.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d">
     <StackPanel Margin="30">
         <TextBlock Margin="0,0,0,50"
                    FontSize="40"
                    HorizontalAlignment="Center">Iniciar sesión</TextBlock>
-        <Label>Nombre del usuario:</Label>
-        <TextBox Text="{Binding Usuario.Nombre}"></TextBox>
+        <Label>Correo electrónico:</Label>
+        <TextBox x:Name="txtCorreo" Text="{Binding Usuario.Correo}"></TextBox>
         <Label>Contraseña:</Label>
         <TextBox Visibility="Collapsed"
                  Name="txtPassword" 
                  Text="{Binding Usuario.Contrasena, UpdateSourceTrigger= PropertyChanged}" >
         </TextBox>
-        <PasswordBox Name="pwb1" 
-                     LostFocus="pwb1_LostFocus"
-                    >
+        <PasswordBox Name="pwb1">
         </PasswordBox>
         <TextBlock Margin="10"
                    Text="{Binding Error}"
@@ -30,15 +27,18 @@
                         Foreground="blue">
                          <Hyperlink 
                              Command="{Binding VerRegistrarUsuarioCommand}" 
+                             Click="Button_Click"
                              Foreground="Blue">Registrar Usuario
                          </Hyperlink>
 
         </TextBlock>
-        <Button Command="{Binding IniciarSesionCommand}"
+        <Button Click="Button_Click"
+                Command="{Binding IniciarSesionCommand}"
                 Margin="20"
                 Padding="20,10"
                 Content="Iniciar Sesión" 
-                HorizontalAlignment="Center" >
+                HorizontalAlignment="Center" 
+                IsDefault="True">
         </Button>
 
     </StackPanel>
