@@ -16,9 +16,10 @@
         <ContentControl>
             <ContentControl.Resources>
                 <local:LoginView x:Key="LoginView"></local:LoginView>
-                <AdmViews:VerAdministrador x:Key="VerAdm"></AdmViews:VerAdministrador>
+                <AdmViews:IndexAdministrador x:Key="VerAdm"></AdmViews:IndexAdministrador>
                 <ClientViews:VerCliente x:Key="VerCliente"></ClientViews:VerCliente>
                 <local:VerRegistrarUsuario x:Key="VerRegistrarUsuario"></local:VerRegistrarUsuario>
+                
             </ContentControl.Resources>
             <ContentControl.Style>
                 <Style TargetType="ContentControl">
@@ -33,6 +34,7 @@
                         <DataTrigger Binding="{Binding Modo}" Value="{x:Static local:ModoVistas.VerRegistrarUsuario}">
                             <Setter Property="Content" Value="{StaticResource VerRegistrarUsuario}"/>
                         </DataTrigger>
+                        
                     </Style.Triggers>
                 </Style>
             </ContentControl.Style>

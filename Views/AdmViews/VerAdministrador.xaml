@@ -9,6 +9,7 @@
     <UserControl.DataContext>
         <vm:AdministradorViewModel></vm:AdministradorViewModel>
     </UserControl.DataContext>
+    
     <StackPanel>
         <!--Titulo-->
         <Border DockPanel.Dock="Top" Height="80" Background="LightBlue" VerticalAlignment="Top">
@@ -17,7 +18,7 @@
         <!--Botones-->
         <!--Botones para agregar productos-->
         <StackPanel Orientation="Horizontal">
-            <Button Background="Yellow" Width="100">Agregar</Button>
+            <Button Background="Yellow" Width="100" Command="{Binding VerRegistrarProductoCommand}">Agregar</Button>
         </StackPanel>
         <!--Lista-->
         <ScrollViewer Height="600" Background="Aqua" BorderBrush="{x:Null}">
