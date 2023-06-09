@@ -13,9 +13,9 @@
     </UserControl.DataContext>
     <DockPanel>
         <!--Podemos quitar el titulo y poner un borde que siempre este en la parte de arriba, y controlamos su contenido dependiendo de la ventana-->
-        <Border DockPanel.Dock="Top" Height="80" Background="LightBlue" VerticalAlignment="Top">
+        <!--<Border DockPanel.Dock="Top" Height="80" Background="LightBlue" VerticalAlignment="Top">
             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Este es el titulo" Foreground="White" FontSize="50"></TextBlock>
-        </Border>
+        </Border>-->
 
         <!--Aqui empieza el ScrollViewer-->
         <ScrollViewer Height="600" Background="Aqua" BorderBrush="{x:Null}">

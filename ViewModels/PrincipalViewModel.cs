@@ -23,6 +23,7 @@ namespace ProyectoBBDD.ViewModels
         public ModoVistas Modo { get; set; }
         //LoginView view;
         public string Error { get; set; }
+        public string Titulo { get; set; }
         public ICommand IniciarSesionCommand { get; set; }
         public ICommand CerrarSesionCommand { get; set; }
 
@@ -31,18 +32,13 @@ namespace ProyectoBBDD.ViewModels
         UsuarioCatalogo catalagous = new UsuarioCatalogo();
         public PrincipalViewModel()
         {
+            Titulo = "Iniciar sesión";
             CerrarSesionCommand = new RelayCommand(CerrarSesion);
             IniciarSesionCommand = new RelayCommand(IniciarSesion);
 
             VerRegistrarUsuarioCommand = new RelayCommand(VerRegistrarUsuario);
             RegistrarUsuarioCommand = new RelayCommand(RegistrarUsuario);
             Usuario = new();
-            //view = new LoginView()
-            //{
-            //    DataContext = this
-            //};
-
-            //Vista = view;
             Modo = ModoVistas.LoginView;
             Actualizar();
         }
@@ -130,7 +126,10 @@ namespace ProyectoBBDD.ViewModels
 
         private void VerRegistrarUsuario()
         {
-            Usuario = new();
+            Usuario = new()
+            {
+                Idrol = 2
+            };
             Modo = ModoVistas.VerRegistrarUsuario;
             Actualizar();
         }

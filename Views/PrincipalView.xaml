@@ -13,6 +13,11 @@
         <vm:PrincipalViewModel></vm:PrincipalViewModel>
     </Window.DataContext>
     <DockPanel>
+        <!--Titulo-->
+        <Border DockPanel.Dock="Top" Height="80" Background="LightBlue" VerticalAlignment="Top">
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Titulo}" Foreground="White" FontSize="50"></TextBlock>
+        </Border>
+        <!--ContentControl donde esta todo-->
         <ContentControl>
             <ContentControl.Resources>
                 <local:LoginView x:Key="LoginView"></local:LoginView>

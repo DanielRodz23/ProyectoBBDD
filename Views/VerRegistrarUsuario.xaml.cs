@@ -24,5 +24,12 @@ namespace ProyectoBBDD.Views
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            txtPasswordR.Text = "";
+            txtPasswordR.Text = pwb2.Password;
+            pwb2.Clear();
+        }
     }
 }
