@@ -14,36 +14,58 @@
     </Window.DataContext>
     <DockPanel>
         <!--Titulo-->
-        <Border DockPanel.Dock="Top" Height="80" Background="LightBlue" VerticalAlignment="Top">
-            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Titulo}" Foreground="White" FontSize="50"></TextBlock>
+        <Border DockPanel.Dock="Top" Height="100" Background="Blue">
+            <DockPanel>
+                <DockPanel.Resources>
+                    <Style TargetType="TextBlock" x:Key="CerrarSesionStyle">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding EstaConectado}" Value="False">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </DockPanel.Resources>
+                <TextBlock Style="{StaticResource CerrarSesionStyle}" Width="100" HorizontalAlignment="Right" Margin="0,0,10,0"
+                           DockPanel.Dock="Bottom" Background="Blue" FontSize="15" Foreground="Yellow">
+                        (
+                         <Hyperlink 
+                             Command="{Binding CerrarSesionCommand}" 
+                             Foreground="Yellow">Cerrar sesión
+                         </Hyperlink>
+                        )
+                </TextBlock>
+                <TextBlock VerticalAlignment="Top" Margin="0,10,0,0" HorizontalAlignment="Center" Text="{Binding Titulo}" Foreground="White" FontSize="50"></TextBlock>
+            </DockPanel>
         </Border>
-        <!--ContentControl donde esta todo-->
-        <ContentControl>
-            <ContentControl.Resources>
-                <local:LoginView x:Key="LoginView"></local:LoginView>
-                <AdmViews:IndexAdministrador x:Key="VerAdm"></AdmViews:IndexAdministrador>
-                <ClientViews:VerCliente x:Key="VerCliente"></ClientViews:VerCliente>
-                <local:VerRegistrarUsuario x:Key="VerRegistrarUsuario"></local:VerRegistrarUsuario>
-                
-            </ContentControl.Resources>
-            <ContentControl.Style>
-                <Style TargetType="ContentControl">
-                    <Setter Property="Content" Value="{StaticResource LoginView}"></Setter>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Modo}" Value="{x:Static local:ModoVistas.VerAdministrador}">
-                            <Setter Property="Content" Value="{StaticResource VerAdm}"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Modo}" Value="{x:Static local:ModoVistas.VerCliente}">
-                            <Setter Property="Content" Value="{StaticResource VerCliente}"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Modo}" Value="{x:Static local:ModoVistas.VerRegistrarUsuario}">
-                            <Setter Property="Content" Value="{StaticResource VerRegistrarUsuario}"/>
-                        </DataTrigger>
-                       
-                        
-                    </Style.Triggers>
-                </Style>
-            </ContentControl.Style>
-        </ContentControl>
+        <DockPanel>
+            <!--ContentControl donde esta todo-->
+            <ContentControl>
+                <ContentControl.Resources>
+                    <local:LoginView x:Key="LoginView"></local:LoginView>
+                    <AdmViews:IndexAdministrador x:Key="VerAdm"></AdmViews:IndexAdministrador>
+                    <ClientViews:VerCliente x:Key="VerCliente"></ClientViews:VerCliente>
+                    <local:VerRegistrarUsuario x:Key="VerRegistrarUsuario"></local:VerRegistrarUsuario>
+
+                </ContentControl.Resources>
+                <ContentControl.Style>
+                    <Style TargetType="ContentControl">
+                        <Setter Property="Content" Value="{StaticResource LoginView}"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Modo}" Value="{x:Static local:ModoVistas.VerAdministrador}">
+                                <Setter Property="Content" Value="{StaticResource VerAdm}"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Modo}" Value="{x:Static local:ModoVistas.VerCliente}">
+                                <Setter Property="Content" Value="{StaticResource VerCliente}"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Modo}" Value="{x:Static local:ModoVistas.VerRegistrarUsuario}">
+                                <Setter Property="Content" Value="{StaticResource VerRegistrarUsuario}"/>
+                            </DataTrigger>
+
+
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </DockPanel>
     </DockPanel>
 </Window>

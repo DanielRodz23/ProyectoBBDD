@@ -26,7 +26,7 @@ namespace ProyectoBBDD.ViewModels
         public string Titulo { get; set; }
         public ICommand IniciarSesionCommand { get; set; }
         public ICommand CerrarSesionCommand { get; set; }
-
+        public bool EstaConectado => Usuario.Id != 0;
         public ICommand VerRegistrarUsuarioCommand { get; set; }
         public ICommand RegistrarUsuarioCommand { get; set; }
         UsuarioCatalogo catalagous = new UsuarioCatalogo();
@@ -114,12 +114,14 @@ namespace ProyectoBBDD.ViewModels
         [Authorize(Roles = "Cliente")]
         private void AccionesUsuarioCliente()
         {
+            this.Titulo = "Sesion de cliente";
             Modo = ModoVistas.VerCliente;
             Actualizar();
         }
         [Authorize(Roles = "Administrador")]
         private void AccionesUsuarioAdministrador()
         {
+            this.Titulo = "Sesion de administrador";
             Modo = ModoVistas.VerAdministrador;
             Actualizar();
         }
