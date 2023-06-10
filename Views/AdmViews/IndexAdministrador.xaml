@@ -16,6 +16,11 @@
             <ContentControl.Resources>
                 <local:VerAdministrador x:Key="verAdministrador"></local:VerAdministrador>
                 <local:RegistrarProducto x:Key="RegistrarProducto"></local:RegistrarProducto>
+                <local:RegistrarUsuario x:Key="RegistrarUsuario"></local:RegistrarUsuario>
+                <local:EditarProducto x:Key="EditarProducto"></local:EditarProducto>
+                <local:EditarUsuario x:Key="EditarUsuario"></local:EditarUsuario>
+                <local:EliminarProducto x:Key="EliminarProducto"></local:EliminarProducto>
+                <local:EliminarUsuario x:Key="EliminarUsuario"></local:EliminarUsuario>
             </ContentControl.Resources>
             <ContentControl.Style>
                 <Style TargetType="ContentControl">
@@ -25,6 +30,21 @@
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Modo}" Value="{x:Static vw:ModoVistas.VerRegistrarProducto}">
                             <Setter Property="Content" Value="{StaticResource RegistrarProducto}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Modo}" Value="{x:Static vw:ModoVistas.VerEditarProducto}">
+                            <Setter Property="Content" Value="{StaticResource EditarProducto}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Modo}" Value="{x:Static vw:ModoVistas.VerEliminarProducto}">
+                            <Setter Property="Content" Value="{StaticResource EliminarProducto}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Modo}" Value="{x:Static vw:ModoVistas.VerRegistrarUsuario}">
+                            <Setter Property="Content" Value="{StaticResource RegistrarUsuario}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Modo}" Value="{x:Static vw:ModoVistas.VerEliminarUsuario}">
+                            <Setter Property="Content" Value="{StaticResource EliminarUsuario}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Modo}" Value="{x:Static vw:ModoVistas.VerEditarUsuario}">
+                            <Setter Property="Content" Value="{StaticResource EditarUsuario}"/>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
