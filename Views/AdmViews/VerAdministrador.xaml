@@ -12,9 +12,9 @@
     
     <StackPanel>
         <!--Titulo-->
-        <Border DockPanel.Dock="Top" Height="80" Background="LightBlue" VerticalAlignment="Top">
+        <!--<Border DockPanel.Dock="Top" Height="80" Background="LightBlue" VerticalAlignment="Top">
             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Este es el titulo" Foreground="White" FontSize="50"></TextBlock>
-        </Border>
+        </Border>-->
         <!--Botones-->
         <!--Botones para agregar productos-->
         <StackPanel Orientation="Horizontal">

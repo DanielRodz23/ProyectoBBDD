@@ -3,8 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:ProyectoBBDD.ViewModels"
              xmlns:local="clr-namespace:ProyectoBBDD.Views"
              mc:Ignorable="d" >
+    <!--<UserControl.DataContext>
+        <vm:PrincipalViewModel></vm:PrincipalViewModel>
+    </UserControl.DataContext>-->
     <DockPanel >
         <Border Padding="10" 
                     DockPanel.Dock="Top" 
@@ -19,10 +23,15 @@
             <Label>Correo electrónico:</Label>
             <TextBox Text="{Binding Usuario.Correo}"></TextBox>
             <Label>Contraseña:</Label>
-            <TextBox Text="{Binding Usuario.Contrasena}"></TextBox>
+            <TextBox Visibility="Collapsed"
+                 Name="txtPasswordR" 
+                 Text="{Binding Usuario.Contrasena, UpdateSourceTrigger= PropertyChanged}" >
+            </TextBox>
+            <PasswordBox Name="pwb2">
+            </PasswordBox>
             <TextBlock Margin="10" Text="{Binding Error}" Foreground="Red" HorizontalAlignment="Center"></TextBlock>
             <WrapPanel HorizontalAlignment="Center" Margin="20">
-                <Button Padding="10,5" Command="{Binding RegistrarUsuarioCommand}">Registrar</Button>
+                <Button Padding="10,5" IsDefault="True" Click="Button_Click"  Command="{Binding RegistrarUsuarioCommand}">Registrar</Button>
                 <Button Padding="10,5" Command="{Binding CerrarSesionCommand}" Margin="10,0,0,0">Cancelar</Button>
             </WrapPanel>
         </StackPanel>

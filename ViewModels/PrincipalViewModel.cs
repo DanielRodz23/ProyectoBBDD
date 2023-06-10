@@ -23,26 +23,22 @@ namespace ProyectoBBDD.ViewModels
         public ModoVistas Modo { get; set; }
         //LoginView view;
         public string Error { get; set; }
+        public string Titulo { get; set; }
         public ICommand IniciarSesionCommand { get; set; }
         public ICommand CerrarSesionCommand { get; set; }
-
+        public bool EstaConectado => Usuario.Id != 0;
         public ICommand VerRegistrarUsuarioCommand { get; set; }
         public ICommand RegistrarUsuarioCommand { get; set; }
         UsuarioCatalogo catalagous = new UsuarioCatalogo();
         public PrincipalViewModel()
         {
+            Titulo = "Iniciar sesión";
             CerrarSesionCommand = new RelayCommand(CerrarSesion);
             IniciarSesionCommand = new RelayCommand(IniciarSesion);
 
             VerRegistrarUsuarioCommand = new RelayCommand(VerRegistrarUsuario);
             RegistrarUsuarioCommand = new RelayCommand(RegistrarUsuario);
             Usuario = new();
-            //view = new LoginView()
-            //{
-            //    DataContext = this
-            //};
-
-            //Vista = view;
             Modo = ModoVistas.LoginView;
             Actualizar();
         }
@@ -78,6 +74,7 @@ namespace ProyectoBBDD.ViewModels
 
         private void CerrarSesion()
         {
+            Titulo = "Inicio de sesión";
             Usuario = new();
             Modo = ModoVistas.LoginView;
             Actualizar();
@@ -118,19 +115,24 @@ namespace ProyectoBBDD.ViewModels
         [Authorize(Roles = "Cliente")]
         private void AccionesUsuarioCliente()
         {
+            this.Titulo = "Sesion de cliente";
             Modo = ModoVistas.VerCliente;
             Actualizar();
         }
         [Authorize(Roles = "Administrador")]
         private void AccionesUsuarioAdministrador()
         {
+            this.Titulo = "Sesion de administrador";
             Modo = ModoVistas.VerAdministrador;
             Actualizar();
         }
 
         private void VerRegistrarUsuario()
         {
-            Usuario = new();
+            Usuario = new()
+            {
+                Idrol = 2
+            };
             Modo = ModoVistas.VerRegistrarUsuario;
             Actualizar();
         }

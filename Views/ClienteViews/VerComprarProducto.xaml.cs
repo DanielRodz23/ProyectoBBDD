@@ -13,23 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProyectoBBDD.Views
+namespace ProyectoBBDD.Views.ClienteViews
 {
     /// <summary>
-    /// Lógica de interacción para VerRegistrarUsuario.xaml
+    /// Lógica de interacción para VerComprarProducto.xaml
     /// </summary>
-    public partial class VerRegistrarUsuario : UserControl
+    public partial class VerComprarProducto : UserControl
     {
-        public VerRegistrarUsuario()
+        public VerComprarProducto()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            txtPasswordR.Text = "";
-            txtPasswordR.Text = pwb2.Password;
-            pwb2.Clear();
         }
     }
 }
