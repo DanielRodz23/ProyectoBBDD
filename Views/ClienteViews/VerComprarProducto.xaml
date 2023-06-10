@@ -12,7 +12,15 @@
     </UserControl.DataContext>
     <StackPanel>
         <TextBlock FontWeight="Bold" FontSize="50" HorizontalAlignment="Center">Comprar producto</TextBlock>
-        <TextBlock>Comprar este procesador:</TextBlock>
-        <TextBox Text="{Binding Productos.Nombre}"></TextBox>
+        <Label>Comprar este procesador:</Label>
+        <TextBlock Text="{Binding Productos.Nombre}"></TextBlock>
+        <Label>Descripción:</Label>
+        <TextBlock Text="{Binding Productos.Descripcion}"></TextBlock>
+        <Label>Precio:</Label>
+        <TextBlock>
+            <Run Text="$"/>
+            <Run Text="{Binding Productos.Precio}"/>
+        </TextBlock>
+        <Button Command="{Binding ComprarProductoCommand}" Margin="0,10,0,0" Content="Comprar procesador" Width="200"></Button>
     </StackPanel>
 </UserControl>

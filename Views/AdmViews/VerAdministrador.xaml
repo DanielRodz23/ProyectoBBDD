@@ -18,12 +18,12 @@
         <!--Botones-->
         <!--Botones para agregar productos-->
         <StackPanel Orientation="Horizontal">
-            <Button Background="Yellow" Width="100" Command="{Binding VerRegistrarProductoCommand}">Agregar P</Button>
-            <Button Background="Yellow" Width="100" Command="{Binding VerEditarProductoCommand}">Editar P</Button>
-            <Button Background="Yellow" Width="100" Command="{Binding VerEliminarProductoCommand}">Eliminar P</Button>
-            <Button Background="Yellow" Width="100" Command="{Binding VerRegistrarUsuarioCommand}">Agregar U</Button>
-            <Button Background="Yellow" Width="100" Command="{Binding VerEditarUsuarioCommand}">Editar U</Button>
-            <Button Background="Yellow" Width="100" Command="{Binding VerEliminarUsuarioCommand}">Eliminar U</Button>
+            <Button  Width="100" Command="{Binding VerRegistrarProductoCommand}">Agregar P</Button>
+            <Button  Width="100" Command="{Binding VerEditarProductoCommand}">Editar P</Button>
+            <Button  Width="100" Command="{Binding VerEliminarProductoCommand}">Eliminar P</Button>
+            <Button  Width="100" Command="{Binding VerRegistrarUsuarioCommand}">Agregar U</Button>
+            <Button  Width="100" Command="{Binding VerEditarUsuarioCommand}">Editar U</Button>
+            <Button  Width="100" Command="{Binding VerEliminarUsuarioCommand}">Eliminar U</Button>
         </StackPanel>
         <!--Lista-->
         <ScrollViewer Height="600" Background="Aqua" BorderBrush="{x:Null}">
