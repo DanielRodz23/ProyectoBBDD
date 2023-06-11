@@ -19,7 +19,7 @@
         <!--Botones-->
         <!--Botones para agregar productos-->
         <StackPanel Orientation="Horizontal">
-            <Button  Width="100" Command="{Binding VerRegistrarProductoCommand}">Agregar P</Button>
+            <!--<Button  Width="100" Command="{Binding VerRegistrarProductoCommand}">Agregar P</Button>-->
             
             <Button  Width="100" Command="{Binding VerRegistrarUsuarioCommand}">Agregar U</Button>
             <Button  Width="100" Command="{Binding VerEditarUsuarioCommand}">Editar U</Button>

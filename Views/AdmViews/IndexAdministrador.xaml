@@ -11,7 +11,21 @@
     <UserControl.DataContext>
         <vm:AdministradorViewModel></vm:AdministradorViewModel>
     </UserControl.DataContext>
-    <Grid>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Left"
+                    >
+            <StackPanel.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="Padding" Value="10"/>
+                </Style>
+            </StackPanel.Resources>
+            <Border>
+                <Button Command="{Binding VerAdmUsuariosCommand}">Ver Usuarios</Button>
+            </Border>
+            <Border>
+                <Button Command="{Binding VerAdmProductosCommand}">Ver Productos</Button>
+            </Border>
+        </StackPanel>
         <ContentControl>
             <ContentControl.Resources>
                 <local:VerAdministrador x:Key="verAdministrador"></local:VerAdministrador>
@@ -21,10 +35,15 @@
                 <local:EditarUsuario x:Key="EditarUsuario"></local:EditarUsuario>
                 <local:EliminarProducto x:Key="EliminarProducto"></local:EliminarProducto>
                 <local:EliminarUsuario x:Key="EliminarUsuario"></local:EliminarUsuario>
+                <local:VerAdmUsuarios x:Key="VerAdmUsuarios"></local:VerAdmUsuarios>
             </ContentControl.Resources>
             <ContentControl.Style>
                 <Style TargetType="ContentControl">
                     <Style.Triggers>
+                        <DataTrigger Binding="{Binding Modo}" Value="{x:Static vw:ModoVistas.VerAdmUsuarios}">
+                            <Setter Property="Content" Value="{StaticResource VerAdmUsuarios}"/>
+                        </DataTrigger>
+                        
                         <DataTrigger Binding="{Binding Modo}" Value="{x:Static vw:ModoVistas.VerAdministrador}">
                             <Setter Property="Content" Value="{StaticResource verAdministrador}"/>
                         </DataTrigger>
@@ -50,5 +69,5 @@
                 </Style>
             </ContentControl.Style>
         </ContentControl>
-    </Grid>
+    </DockPanel>
 </UserControl>

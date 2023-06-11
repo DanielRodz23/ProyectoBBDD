@@ -10,7 +10,7 @@ namespace ProyectoBBDD.Catalogos
     public class RolesCatalogo
     {
         TiendaContext context = new TiendaContext();
-        public IEnumerable<Roles> Roles()
+        public IEnumerable<Roles> GetRoles()
         {
             return context.Roles.OrderBy(x => x.Nombre);
         }

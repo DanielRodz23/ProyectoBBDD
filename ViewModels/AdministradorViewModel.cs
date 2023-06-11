@@ -20,11 +20,14 @@ namespace ProyectoBBDD.ViewModels
         //public PrincipalViewModel Principal { get; set; } = new PrincipalViewModel();
         ProductosCatalogo productosCatalogo = new ProductosCatalogo();
         UsuarioCatalogo usuariosCatalogo = new UsuarioCatalogo();
+        RolesCatalogo rolesCatalogo = new RolesCatalogo();
         public Productos? producto { get; set; }
         public Usuarios? usuario { get; set;}
+        public Roles? Rol { get; set; } = new Roles();
         public string Error { get; set; } = "";
         public ObservableCollection<Productos> productos { get; set; }=new ObservableCollection<Productos>();
         public ObservableCollection<Usuarios> usuarios { get; set; } = new ObservableCollection<Usuarios>();
+        public ObservableCollection<Roles> ListaRoles { get; set; }= new ObservableCollection<Roles>();
         public ModoVistas Modo {  get; set; }
         public ICommand VerRegistrarProductoCommand { get; set; }
         public ICommand RegistrarProductoCommand { get; set; }
@@ -39,25 +42,58 @@ namespace ProyectoBBDD.ViewModels
         public ICommand VerEditarUsuarioCommand { get; set; }
         public ICommand EditarUsuarioCommand { get; set; }
         public ICommand CancelarCommand { get; set; }
+        public ICommand VerAdmUsuariosCommand { get; set; }
+        public ICommand VerAdmProductosCommand { get; set; }
         
         public AdministradorViewModel()
         {
+            //Ver productos o usuarios
+            VerAdmUsuariosCommand = new RelayCommand(VerUsuarios);
+            VerAdmProductosCommand = new RelayCommand(VerProductos);
+
+            //Metodos para productos
             VerRegistrarProductoCommand = new RelayCommand(VerRegistrarProducto);
             RegistrarProductoCommand = new RelayCommand(RegistrarProducto);
             VerEliminarProductoCommand = new RelayCommand<int>(VerEliminarProducto);
             EliminarProductoCommand = new RelayCommand(EliminarProducto);
             VerEditarProductoCommand = new RelayCommand<int>(VerEditarProducto);
             EditarProductoCommand = new RelayCommand(EditarProducto);
+            
+            //Metodos para usuarios
             VerRegistrarUsuarioCommand = new RelayCommand(verRegistrarUsuario);
             RegistrarUsuarioCommand = new RelayCommand(RegistrarUsuario);
             VerEliminarUsuarioCommand = new RelayCommand<int>(VerEliminarUsuario);
             EliminarUsuarioCommand = new RelayCommand(EliminarUsuario);
             VerEditarUsuarioCommand = new RelayCommand<int>(VerEditarUsuario);
             EditarUsuarioCommand = new RelayCommand(EditarUsuario);
+            
+            //Metodos generales
             CancelarCommand = new RelayCommand(Cancelar);
-            Modo = ModoVistas.VerAdministrador;
+
+            CargarRoles();
             CargarUsuarios();
             CargarProductos();
+            VerProductos();
+            Actualizar();
+        }
+        void CargarRoles()
+        {
+            ListaRoles.Clear();
+            foreach (var item in rolesCatalogo.GetRoles())
+            {
+                ListaRoles.Add(item);
+            }
+            Actualizar();
+        }
+        private void VerProductos()
+        {
+            Modo = ModoVistas.VerAdministrador;
+            Actualizar();
+        }
+
+        private void VerUsuarios()
+        {
+            Modo =ModoVistas.VerAdmUsuarios;
             Actualizar();
         }
 

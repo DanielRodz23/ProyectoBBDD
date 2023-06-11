@@ -18,8 +18,9 @@ namespace ProyectoBBDD.Catalogos
         string patroncorreo = @"[a-zA-Z0-9._]+@(gmail|outlook|yahoo|hotmail|itesrc|rcarbonifera)+\.(com|org|edu|tecnm)+(\.[a-z]{2})?";
         public IEnumerable<Usuarios> GetUsuarios()
         {
-            return context.Usuarios.OrderBy(x=>x.Nombre);
+            return context.Usuarios.OrderBy(x=>x.Nombre).Include(x=>x.IdrolNavigation);
         }
+
         public Usuarios? GetUsuarioId(int id)
         {
             return context.Usuarios.FirstOrDefault(x => x.Id == id);

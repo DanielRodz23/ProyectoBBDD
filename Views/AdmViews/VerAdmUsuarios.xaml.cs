@@ -16,20 +16,13 @@ using System.Windows.Shapes;
 namespace ProyectoBBDD.Views.AdmViews
 {
     /// <summary>
-    /// Lógica de interacción para RegistrarUsuario.xaml
+    /// Lógica de interacción para VerAdmUsuarios.xaml
     /// </summary>
-    public partial class RegistrarUsuario : UserControl
+    public partial class VerAdmUsuarios : UserControl
     {
-        public RegistrarUsuario()
+        public VerAdmUsuarios()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            txtPasswordR.Clear();
-            txtPasswordR.Text = pwb2.Password;
-            pwb2.Clear();
         }
     }
 }

@@ -4,9 +4,35 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProyectoBBDD.Views.AdmViews"
+             xmlns:vm="clr-namespace:ProyectoBBDD.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Button Command="{Binding CancelarCommand}">Cancelar</Button>
-    </Grid>
+    <!--<UserControl.DataContext>
+        <vm:AdministradorViewModel></vm:AdministradorViewModel>
+    </UserControl.DataContext>-->
+    <StackPanel Margin="20">
+        <Label>Nombre:</Label>
+        <TextBox Text="{Binding Usuario.Nombre}"></TextBox>
+        <Label>Correo electrónico:</Label>
+        <TextBox Text="{Binding Usuario.Correo}"></TextBox>
+        <Label>Tipo de usuario:</Label>
+        <ComboBox ItemsSource="{Binding ListaRoles}"
+                  SelectedItem="{Binding Rol}" 
+                  DisplayMemberPath="Nombre" 
+                  SelectedValuePath="Id" 
+                  SelectedValue="{Binding usuario.Idrol}"></ComboBox>
+        <Label>Contraseña:</Label>
+        <TextBox Visibility="Collapsed"
+                 Name="txtPasswordR" 
+                 Text="{Binding Usuario.Contrasena, UpdateSourceTrigger= PropertyChanged}" >
+        </TextBox>
+        <PasswordBox Name="pwb2">
+        </PasswordBox>
+        <TextBlock Margin="10" Text="{Binding Error}" Foreground="Red" HorizontalAlignment="Center"></TextBlock>
+        <WrapPanel HorizontalAlignment="Center" Margin="20">
+            <Button Padding="10,5" IsDefault="True" Click="Button_Click" Command="{Binding RegistrarUsuarioCommand}">Registrar</Button>
+            <Button Padding="10,5" Command="{Binding RegresarVerUsuarios}" Margin="10,0,0,0">Cancelar</Button>
+        </WrapPanel>
+    </StackPanel>
+
 </UserControl>
