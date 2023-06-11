@@ -20,9 +20,9 @@ namespace ProyectoBBDD.Catalogos
         {
             return context.Usuarios.OrderBy(x=>x.Nombre);
         }
-        public IEnumerable<Usuarios> GetUsuarioId(int id)
+        public Usuarios? GetUsuarioId(int id)
         {
-            return context.Usuarios.Where(x => x.Id == id);
+            return context.Usuarios.FirstOrDefault(x => x.Id == id);
         }
         public Usuarios? GetUsuario(string correo)
         {

@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProyectoBBDD.Views.AdmViews"
              xmlns:vm="clr-namespace:ProyectoBBDD.ViewModels"
+             x:Name="verAdministrador"
              mc:Ignorable="d">
     <!--<UserControl.DataContext>
         <vm:AdministradorViewModel></vm:AdministradorViewModel>
@@ -19,8 +20,7 @@
         <!--Botones para agregar productos-->
         <StackPanel Orientation="Horizontal">
             <Button  Width="100" Command="{Binding VerRegistrarProductoCommand}">Agregar P</Button>
-            <Button  Width="100" Command="{Binding VerEditarProductoCommand}">Editar P</Button>
-            <Button  Width="100" Command="{Binding VerEliminarProductoCommand}">Eliminar P</Button>
+            
             <Button  Width="100" Command="{Binding VerRegistrarUsuarioCommand}">Agregar U</Button>
             <Button  Width="100" Command="{Binding VerEditarUsuarioCommand}">Editar U</Button>
             <Button  Width="100" Command="{Binding VerEliminarUsuarioCommand}">Eliminar U</Button>
@@ -81,9 +81,8 @@
                                         </TextBlock>
                                     </WrapPanel>
                                     <StackPanel DockPanel.Dock="Right" Margin="0,0,0,0" VerticalAlignment="Center" Orientation="Vertical">
-                                        <Button Width="100" Content="Accion"></Button>
-                                        <Button Width="100" Content="Accion"></Button>
-                                        <Button Width="100" Content="Accion"></Button>
+                                        <Button  Width="100" Command="{Binding Source={x:Reference verAdministrador},Path=DataContext.VerEditarProductoCommand}" CommandParameter="{Binding Id}">Editar P</Button>
+                                        <Button  Width="100" Command="{Binding Source={x:Reference verAdministrador},Path=DataContext.VerEliminarProductoCommand}" CommandParameter="{Binding Id}">Eliminar P</Button>
                                     </StackPanel>
                                 </StackPanel>
                             </Border>

@@ -5,8 +5,30 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProyectoBBDD.Views.AdmViews"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-       
-    </Grid>
+             d:DesignHeight="450" d:DesignWidth="800" Background="White">
+    <DockPanel >
+        
+
+        <StackPanel Margin="20">
+            <Label>Sku:</Label>
+            <TextBox Text="{Binding producto.Sku}"></TextBox>
+            <Label>Nombre del Producto:</Label>
+            <TextBox Text="{Binding producto.Nombre}"></TextBox>
+            <Label>Precio:</Label>
+            <TextBox 
+                 Text="{Binding producto.Precio}" >
+            </TextBox>
+            <Label>Descripción:</Label>
+            <TextBox Text="{Binding producto.Descripcion}" TextWrapping="Wrap"></TextBox>
+            <Label>Stock:</Label>
+            <TextBox Text="{Binding producto.Stock}"></TextBox>
+            <Label>Imagen del Producto:</Label>
+            <TextBox Text="{Binding producto.Imagen}" TextWrapping="Wrap"></TextBox>
+            <TextBlock Margin="10" Text="{Binding Error}" Foreground="Red" HorizontalAlignment="Center"></TextBlock>
+            <WrapPanel HorizontalAlignment="Center" Margin="20">
+                <Button Padding="10,5" IsDefault="True"  Command="{Binding RegistrarProductoCommand}">Agregar</Button>
+                <Button Padding="10,5" Command="{Binding CancelarCommand}" Margin="10,0,0,0">Cancelar</Button>
+            </WrapPanel>
+        </StackPanel>
+    </DockPanel>
 </UserControl>

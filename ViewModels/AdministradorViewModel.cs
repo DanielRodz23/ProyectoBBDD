@@ -99,7 +99,7 @@ namespace ProyectoBBDD.ViewModels
 
         private void VerEditarUsuario(int obj)
         {
-            usuario= (Usuarios?)usuariosCatalogo.GetUsuarioId(obj);
+            usuario= usuariosCatalogo.GetUsuarioId(obj);
             Modo=ModoVistas.VerEditarUsuario;
             Actualizar();
         }
@@ -117,7 +117,7 @@ namespace ProyectoBBDD.ViewModels
 
         private void VerEliminarUsuario(int obj)
         {
-            usuario = (Usuarios?)usuariosCatalogo.GetUsuarioId(obj);
+            usuario = usuariosCatalogo.GetUsuarioId(obj);
             Modo = ModoVistas.VerEliminarUsuario;
             Actualizar();
         }
@@ -188,7 +188,7 @@ namespace ProyectoBBDD.ViewModels
 
         private void VerEditarProducto(int id)
         {
-            producto= (Productos?)productosCatalogo.GetProductoId(id);
+            producto= productosCatalogo.GetProductoId(id);
             Modo = ModoVistas.VerEditarProducto;
             Actualizar();
         }
@@ -206,7 +206,7 @@ namespace ProyectoBBDD.ViewModels
 
         private void VerEliminarProducto(int id)
         {
-            producto = (Productos?)productosCatalogo.GetProductoId(id);
+            producto = productosCatalogo.GetProductoId(id);
             Modo=ModoVistas.VerEliminarProducto;
             Actualizar();
         }
