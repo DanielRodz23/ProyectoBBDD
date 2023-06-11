@@ -44,7 +44,9 @@ namespace ProyectoBBDD.ViewModels
         public ICommand CancelarCommand { get; set; }
         public ICommand VerAdmUsuariosCommand { get; set; }
         public ICommand VerAdmProductosCommand { get; set; }
-        
+        public ICommand RegresarVerUsuariosCommand { get; set; }
+
+
         public AdministradorViewModel()
         {
             //Ver productos o usuarios
@@ -66,7 +68,9 @@ namespace ProyectoBBDD.ViewModels
             EliminarUsuarioCommand = new RelayCommand(EliminarUsuario);
             VerEditarUsuarioCommand = new RelayCommand<int>(VerEditarUsuario);
             EditarUsuarioCommand = new RelayCommand(EditarUsuario);
-            
+
+            RegresarVerUsuariosCommand = new RelayCommand(RegresarVerUsuarios);
+
             //Metodos generales
             CancelarCommand = new RelayCommand(Cancelar);
 
@@ -76,6 +80,14 @@ namespace ProyectoBBDD.ViewModels
             VerProductos();
             Actualizar();
         }
+
+        private void RegresarVerUsuarios()
+        {
+            Modo = ModoVistas.VerAdmUsuarios;
+            usuario = new();
+            Actualizar();
+        }
+
         void CargarRoles()
         {
             ListaRoles.Clear();
@@ -167,7 +179,7 @@ namespace ProyectoBBDD.ViewModels
                     usuariosCatalogo.Agregar(usuario);
                     CargarUsuarios();
                     usuario = new();
-                    Modo = ModoVistas.VerAdministrador;
+                    Modo = ModoVistas.VerAdmUsuarios;
                     Actualizar();
                 }
                 else

@@ -13,7 +13,7 @@
     </UserControl.DataContext>-->
     <StackPanel>
         <Border Padding="5">
-            <Button Command="{Binding }">Agregar Usuario</Button>
+            <Button Command="{Binding VerRegistrarUsuarioCommand}">Agregar Usuario</Button>
         </Border>
         <!--<TextBlock>Hola</TextBlock>-->
         <ScrollViewer Height="600" Background="Aqua" BorderBrush="{x:Null}">
