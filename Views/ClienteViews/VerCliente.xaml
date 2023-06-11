@@ -83,7 +83,7 @@
                                     <Run Text="{Binding Stock}"/>
                                 </TextBlock>
                                 <TextBlock TextWrapping="Wrap" Margin="10"
-                                                   TextAlignment="Justify">
+                                                   TextAlignment="Justify" FontWeight="Bold">
                                     <Run Text="Descripción:" FontWeight="Bold"></Run>
                                     <Run  Text="{Binding Descripcion}"/>
                                 </TextBlock>
