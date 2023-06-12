@@ -10,23 +10,13 @@
     <!--<UserControl.DataContext>
         <vm:AdministradorViewModel></vm:AdministradorViewModel>
     </UserControl.DataContext>-->
-    
+
     <StackPanel>
-        <!--Titulo-->
-        <!--<Border DockPanel.Dock="Top" Height="80" Background="LightBlue" VerticalAlignment="Top">
-            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Este es el titulo" Foreground="White" FontSize="50"></TextBlock>
-        </Border>-->
-        <!--Botones-->
-        <!--Botones para agregar productos-->
-        <StackPanel Orientation="Horizontal">
-            <!--<Button  Width="100" Command="{Binding VerRegistrarProductoCommand}">Agregar P</Button>-->
-            
-            <Button  Width="100" Command="{Binding VerRegistrarUsuarioCommand}">Agregar U</Button>
-            <Button  Width="100" Command="{Binding VerEditarUsuarioCommand}">Editar U</Button>
-            <Button  Width="100" Command="{Binding VerEliminarUsuarioCommand}">Eliminar U</Button>
-        </StackPanel>
+        <Border Padding="5">
+            <Button Command="{Binding VerRegistrarProductoCommand}">Agregar Producto</Button>
+        </Border>
         <!--Lista-->
-        <ScrollViewer Height="600" Background="Aqua" BorderBrush="{x:Null}">
+        <ScrollViewer Background="Aqua" BorderBrush="{x:Null}">
             <ItemsControl ItemsSource="{Binding productos}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -35,8 +25,13 @@
                                 <Setter Property="TextBlock.Foreground" Value="Red"></Setter>
                             </DataTrigger>
                         </DataTemplate.Triggers>
-                        <DockPanel Margin="0,10,0,0">
-                            <Border x:Name="brdBorder" CornerRadius="10" Margin="5,0,0,0">
+                        <Grid Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".5*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width=".4*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.ColumnSpan="3" x:Name="brdBorder" CornerRadius="10" Margin="5,0,0,0">
                                 <Border.Style>
                                     <Style TargetType="Border">
                                         <Setter Property="Background" Value="LightBlue"></Setter>
@@ -51,7 +46,7 @@
                                         </Style.Triggers>
                                     </Style>
                                 </Border.Style>
-                                <StackPanel Orientation="Horizontal">
+                                <!--<StackPanel Orientation="Horizontal">
                                     <WrapPanel Width="900" Orientation="Horizontal">
                                         <WrapPanel.Resources>
                                             <Style TargetType="TextBlock">
@@ -84,9 +79,74 @@
                                         <Button  Width="100" Command="{Binding Source={x:Reference verAdministrador},Path=DataContext.VerEditarProductoCommand}" CommandParameter="{Binding Id}">Editar P</Button>
                                         <Button  Width="100" Command="{Binding Source={x:Reference verAdministrador},Path=DataContext.VerEliminarProductoCommand}" CommandParameter="{Binding Id}">Eliminar P</Button>
                                     </StackPanel>
-                                </StackPanel>
+                                </StackPanel>-->
                             </Border>
-                        </DockPanel>
+                            <!--Primer columna del Grid (solo la imagen)-->
+                            <Image Grid.Column="0" 
+                                   Source="{Binding Imagen}" 
+                                   Width="120" 
+                                   Stretch="Uniform" 
+                                   Height="100" 
+                                   Margin="30,10,50,10"/>
+                            <!--Datos del producto-->
+                            <WrapPanel Grid.Column="1">
+                                <WrapPanel.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                    </Style>
+                                </WrapPanel.Resources>
+                                
+                                <TextBlock Margin="10">
+                                    <Run Text="Sku:" FontWeight="Bold"></Run>
+                                    <Run Text="{Binding Sku}"/>
+                                </TextBlock>
+                                <TextBlock Margin="10">
+                                    <Run Text="Nombre:" FontWeight="Bold"></Run>
+                                    <Run Text="{Binding Nombre}"/>
+                                </TextBlock>
+                                <TextBlock Margin="10">
+                                    <Run Text="Precio:" FontWeight="Bold"></Run>
+                                    <Run Text="$"/><Run Text="{Binding Precio}"/>
+                                </TextBlock>
+                                <TextBlock Margin="10">
+                                    <Run Text="Stock:" FontWeight="Bold"></Run>
+                                    <Run Text="{Binding Stock}"/>
+                                </TextBlock>
+                                <!--Descripción del producto-->
+                                <TextBlock TextWrapping="Wrap" Margin="10">
+                                    <Run Text="Descripción:" FontWeight="Bold"></Run>
+                                    <Run  Text="{Binding Descripcion}"/>
+                                </TextBlock>
+                            </WrapPanel>
+                            <!--Botones-->
+                            <StackPanel Grid.Column="2" Margin="0,0,0,0" VerticalAlignment="Center" Orientation="Vertical">
+                                <Border Padding="10">
+                                    <Button  Width="100" 
+                                             Command="{Binding Source={x:Reference verAdministrador},Path=DataContext.VerEditarProductoCommand}" 
+                                             CommandParameter="{Binding Id}">
+                                        Editar P</Button>
+                                </Border>
+                                <Border Padding="10">
+                                    <Button  Width="100" 
+                                         Command="{Binding Source={x:Reference verAdministrador},Path=DataContext.VerEliminarProductoCommand}" 
+                                         CommandParameter="{Binding Id}">
+                                        Eliminar P</Button>
+                                </Border>
+                            </StackPanel>
+                            <!--Border para tapar los botones-->
+                            <Border Background="Transparent" Grid.Column="3">
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="Visibility" Value="Visible"></Setter>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Estado}" Value="1">
+                                                <Setter Property="Visibility" Value="Collapsed"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                            </Border>
+                        </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
