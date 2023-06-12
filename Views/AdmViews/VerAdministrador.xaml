@@ -16,7 +16,7 @@
             <Button Command="{Binding VerRegistrarProductoCommand}">Agregar Producto</Button>
         </Border>
         <!--Lista-->
-        <ScrollViewer Background="Aqua" BorderBrush="{x:Null}">
+        <ScrollViewer BorderBrush="{x:Null}">
             <ItemsControl ItemsSource="{Binding productos}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -86,16 +86,16 @@
                                    Source="{Binding Imagen}" 
                                    Width="120" 
                                    Stretch="Uniform" 
-                                   Height="100" 
-                                   Margin="30,10,50,10"/>
+                                   Height="100"
+                                   Margin="20"/>
                             <!--Datos del producto-->
-                            <WrapPanel Grid.Column="1">
+                            <WrapPanel Grid.Column="1"
+                                       Margin="0,20">
                                 <WrapPanel.Resources>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="VerticalAlignment" Value="Center"/>
                                     </Style>
                                 </WrapPanel.Resources>
-                                
                                 <TextBlock Margin="10">
                                     <Run Text="Sku:" FontWeight="Bold"></Run>
                                     <Run Text="{Binding Sku}"/>
@@ -134,7 +134,7 @@
                                 </Border>
                             </StackPanel>
                             <!--Border para tapar los botones-->
-                            <Border Background="Transparent" Grid.Column="3">
+                            <!--<Border Background="Transparent" Grid.Column="3">
                                 <Border.Style>
                                     <Style TargetType="Border">
                                         <Setter Property="Visibility" Value="Visible"></Setter>
@@ -145,7 +145,7 @@
                                         </Style.Triggers>
                                     </Style>
                                 </Border.Style>
-                            </Border>
+                            </Border>-->
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

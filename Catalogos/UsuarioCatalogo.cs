@@ -18,7 +18,7 @@ namespace ProyectoBBDD.Catalogos
         string patroncorreo = @"[a-zA-Z0-9._]+@(gmail|outlook|yahoo|hotmail|itesrc|rcarbonifera)+\.(com|org|edu|tecnm)+(\.[a-z]{2})?";
         public IEnumerable<Usuarios> GetUsuarios()
         {
-            return context.Usuarios.OrderBy(x=>x.Nombre).Include(x=>x.IdrolNavigation);
+            return context.Usuarios.Where(x=>x.Idrol==2).OrderBy(x=>x.Nombre).Include(x=>x.IdrolNavigation);
         }
 
         public Usuarios? GetUsuarioId(int id)
@@ -81,12 +81,12 @@ namespace ProyectoBBDD.Catalogos
                 errores.Add("Los caracteres permitidos para el nombre es de 80.");
             if (string.IsNullOrWhiteSpace(u.Contrasena))
                 errores.Add("Debes ingresar una contrasena.");
-            if (u.Contrasena != null && u.Contrasena.Length > 10)
-            {
+            //if (u.Contrasena != null && u.Contrasena.Length > 25)
+            //{
 
-                errores.Add("La contrasena tiene un maximo 10 caracteres");
+            //    errores.Add("La contrasena tiene un maximo 25 caracteres");
 
-            }
+            //}
 
             if (string.IsNullOrWhiteSpace(u.Correo))
                 errores.Add("Debes ingresar un correo.");
