@@ -46,6 +46,7 @@ namespace ProyectoBBDD.ViewModels
         public ICommand VerAdmProductosCommand { get; set; }
         public ICommand RegresarVerUsuariosCommand { get; set; }
         public ICommand CancelarVerUsuarioCommand { get; set; }
+        public ICommand CancelarEditarCommand { get; set; }
 
         public AdministradorViewModel()
         {
@@ -60,6 +61,8 @@ namespace ProyectoBBDD.ViewModels
             EliminarProductoCommand = new RelayCommand(EliminarProducto);
             VerEditarProductoCommand = new RelayCommand<int>(VerEditarProducto);
             EditarProductoCommand = new RelayCommand(EditarProducto);
+
+            CancelarEditarCommand = new RelayCommand(CancelarEditar);
             
             //Metodos para usuarios
             VerRegistrarUsuarioCommand = new RelayCommand(verRegistrarUsuario);
@@ -81,11 +84,20 @@ namespace ProyectoBBDD.ViewModels
             Actualizar();
         }
 
+        private void CancelarEditar()
+        {
+            if (producto != null)
+            {
+                productosCatalogo.Recargar(producto);
+                CancelarVerProductos();
+            }
+        }
+
         private void CancelarVerUsuarios()
         {
             if (usuario != null)
             {
-                //usuariosCatalogo.Recargar(usuario);
+                usuariosCatalogo.Recargar(usuario);
                 RegresarVerUsuarios();
             }
         }
@@ -108,12 +120,14 @@ namespace ProyectoBBDD.ViewModels
         }
         private void VerProductos()
         {
+            CargarProductos();
             Modo = ModoVistas.VerAdministrador;
             Actualizar();
         }
 
         private void VerUsuarios()
         {
+            CargarUsuarios();
             Modo =ModoVistas.VerAdmUsuarios;
             Actualizar();
         }
@@ -137,7 +151,7 @@ namespace ProyectoBBDD.ViewModels
                     usuariosCatalogo.Editar(usuario);
                     CargarUsuarios();
                     usuario = new();
-                    Modo = ModoVistas.VerAdministrador;
+                    Modo = ModoVistas.VerAdmUsuarios;
                     Actualizar();
                 }
                 else
@@ -214,6 +228,7 @@ namespace ProyectoBBDD.ViewModels
 
         private void CancelarVerProductos()
         {
+
             Modo = ModoVistas.VerAdministrador;
             Actualizar();
         }

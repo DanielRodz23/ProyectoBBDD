@@ -36,7 +36,7 @@
             </Border>
             <Border>
                 <Button 
-                    Command="{Binding RegresarVerUsuariosCommand}" >
+                    Command="{Binding CancelarVerUsuarioCommand}" >
                     Cancelar</Button>
             </Border>
         </StackPanel>

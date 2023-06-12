@@ -27,7 +27,7 @@
             <TextBlock Margin="10" Text="{Binding Error}" Foreground="Red" HorizontalAlignment="Center"></TextBlock>
             <WrapPanel HorizontalAlignment="Center" Margin="20">
                 <Button Padding="10,5" IsDefault="True" Command="{Binding EditarProductoCommand}">Editar</Button>
-                <Button Padding="10,5" Command="{Binding CancelarCommand}" Margin="10,0,0,0">Cancelar</Button>
+                <Button Padding="10,5" Command="{Binding CancelarEditarCommand}" Margin="10,0,0,0">Cancelar</Button>
             </WrapPanel>
         </StackPanel>
     </DockPanel>

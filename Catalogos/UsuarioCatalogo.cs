@@ -18,9 +18,12 @@ namespace ProyectoBBDD.Catalogos
         string patroncorreo = @"[a-zA-Z0-9._]+@(gmail|outlook|yahoo|hotmail|itesrc|rcarbonifera)+\.(com|org|edu|tecnm)+(\.[a-z]{2})?";
         public IEnumerable<Usuarios> GetUsuarios()
         {
-            return context.Usuarios.Where(x=>x.Idrol==2).OrderBy(x=>x.Nombre).Include(x=>x.IdrolNavigation);
+            return context.Usuarios.Where(x => x.Idrol == 2).OrderBy(x => x.Nombre).Include(x => x.IdrolNavigation);
         }
-
+        public void Recargar(Usuarios u)
+        {
+            context.Entry(u).Reload();
+        }
         public Usuarios? GetUsuarioId(int id)
         {
             return context.Usuarios.FirstOrDefault(x => x.Id == id);
@@ -81,13 +84,6 @@ namespace ProyectoBBDD.Catalogos
                 errores.Add("Los caracteres permitidos para el nombre es de 80.");
             if (string.IsNullOrWhiteSpace(u.Contrasena))
                 errores.Add("Debes ingresar una contrasena.");
-            //if (u.Contrasena != null && u.Contrasena.Length > 25)
-            //{
-
-            //    errores.Add("La contrasena tiene un maximo 25 caracteres");
-
-            //}
-
             if (string.IsNullOrWhiteSpace(u.Correo))
                 errores.Add("Debes ingresar un correo.");
             if (u.Correo != null)
@@ -99,18 +95,18 @@ namespace ProyectoBBDD.Catalogos
                         "dominio sea uno de estos: " +
                         "gmail,outlook,yahoo,hotmail,itesrc,rcarbonifera y " +
                         "con un dominio de nivel superior como:com,org,edu,tecnm");
-
-                }
-                if (context.Usuarios.Any(x => x.Correo == u.Correo && x.Id != u.Id))
-                    errores.Add("El correo ya esta registrado a otro usuario.");
-                if (errores.Count() == 0)
-            {
-                return true;
             }
-            else
-            {
-                return false;
-            }
+            if (context.Usuarios.Any(x => x.Correo == u.Correo && x.Id != u.Id))
+                errores.Add("El correo ya esta registrado a otro usuario.");
+            //if (errores.Count() == 0)
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+            //    return false;
+            //}
+            return errores.Count == 0;
         }
     }
 }

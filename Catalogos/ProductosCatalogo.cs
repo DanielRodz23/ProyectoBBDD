@@ -17,7 +17,12 @@ namespace ProyectoBBDD.Catalogos
         string patronurl = @"^(https?://)?(www\.)?\S+\.(jpg|jpeg|png|gif)$";
         public IEnumerable<Productos> GetProductos()
         {
+            context = new();
             return context.Productos.OrderBy(x => x.Nombre);
+        }
+        public void Recargar(Productos p)
+        {
+            context.Entry(p).Reload();
         }
         public Productos? GetProductoId(int id) {
             return context.Productos.FirstOrDefault(x=>x.Id == id);
@@ -53,8 +58,8 @@ namespace ProyectoBBDD.Catalogos
                 errores.Add("Los caracteres permitidos para el nombre es de 80.");
             if (p.Precio ==0)
                 errores.Add("Debe ingresar un Precio.");
-            if (p.Precio != 0 && p.Precio > 9999.99m)
-                errores.Add("El Precio que ingreso es demasiado grande");
+            //if (p.Precio != 0 && p.Precio > 9999.99m)
+            //    errores.Add("El Precio que ingreso es demasiado grande");
             if (p.Descripcion == null)
                 errores.Add("Debe ingresar una descripcion");
             if (p.Imagen == null)

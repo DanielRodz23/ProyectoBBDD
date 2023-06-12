@@ -7,19 +7,27 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel Background="white">
-       
+
         <TextBlock Padding="10" FontSize="20" FontWeight="Bold"  
                        HorizontalAlignment="Center" >¿Desea eliminar el producto con el nombre de:
             <Run Text="{Binding producto.Nombre}" ></Run><Run>?</Run>
         </TextBlock>
         <WrapPanel HorizontalAlignment="Center">
-            <Button
-                     Command="{Binding EliminarProductoCommand}"  >Eliminar
-               
-            </Button>
-            <Button   
-                     Command="{Binding CancelarCommand}" >Cancelar
-            </Button>
+            <WrapPanel.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="Padding" Value="10"/>
+                </Style>
+            </WrapPanel.Resources>
+            <Border>
+                <Button Command="{Binding EliminarProductoCommand}">
+                    Eliminar
+                </Button>
+            </Border>
+            <Border>
+                <Button Command="{Binding CancelarCommand}">
+                    Cancelar
+                </Button>
+            </Border>
         </WrapPanel>
     </StackPanel>
 </UserControl>
