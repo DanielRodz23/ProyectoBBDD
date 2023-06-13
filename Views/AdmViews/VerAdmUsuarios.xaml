@@ -11,12 +11,16 @@
     <!--<UserControl.DataContext>
         <vm:AdministradorViewModel></vm:AdministradorViewModel>
     </UserControl.DataContext>-->
-    <StackPanel>
-        <Border Padding="5">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Padding="5">
             <Button Command="{Binding VerRegistrarUsuarioCommand}">Agregar Usuario</Button>
         </Border>
         <!--<TextBlock>Hola</TextBlock>-->
-        <ScrollViewer BorderBrush="{x:Null}">
+        <ScrollViewer Grid.Row="1" BorderBrush="{x:Null}">
             <ItemsControl ItemsSource="{Binding usuarios}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -69,5 +73,5 @@
             </ItemsControl>
         </ScrollViewer>
 
-    </StackPanel>
+    </Grid>
 </UserControl>
