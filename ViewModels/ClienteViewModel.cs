@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using ProyectoBBDD.Catalogos;
 using ProyectoBBDD.Models;
+using ProyectoBBDD.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,31 +18,69 @@ namespace ProyectoBBDD.ViewModels
         ProductosCatalogo productosCatalogo=new ProductosCatalogo();
         UsuarioCatalogo usuarioCatalogo = new UsuarioCatalogo();
 
-       
-
+       public string Error { get; set; }
+        public ModoVistas Modo { get; set; }
         public Usuarios? usuario { get; set; }
         public Productos? Productos { get; set; }
         public ObservableCollection<Productos> ListaProductos { get; set; } =new ObservableCollection<Productos>();
-        public ICommand VerEditarUsuarioCommad { get; set; }
+        public ICommand VerEditarUsuarioCommand { get; set; }
         public ICommand ComprarProductoCommand {get;set;}
         public ICommand EditarUsuarioCommand {get;set;}
+        public ICommand CancelarCommand { get; set; }
+        public ICommand RegresarCommand { get; set; }
         
-        //public ICommand VerEditarUsuario {get;set;}
-        //public ICommand VerEditarUsuario {get;set;}
-        //public ICommand VerEditarUsuario {get;set;}
-        //public ICommand VerEditarUsuario {get;set;}
+       
         public ClienteViewModel()
         {
-            VerEditarUsuarioCommad = new RelayCommand<int>(VerEditarUsuario);
+            VerEditarUsuarioCommand = new RelayCommand<int>(VerEditarUsuario);
             ComprarProductoCommand = new RelayCommand(ComprarProducto);
             EditarUsuarioCommand = new RelayCommand(EditarUsuario);
+            CancelarCommand = new RelayCommand(Cancelar);
+            RegresarCommand = new RelayCommand(Regresar);
+            Modo = ModoVistas.VerCliente;
             CargarProductos();
+            Actualizar();
+        }
+
+        private void Cancelar()
+        {
+            if (usuario != null)
+            {
+                usuarioCatalogo.Recargar(usuario);
+                Regresar();
+            }
+        }
+
+        private void Regresar()
+        {
+            Modo = ModoVistas.VerCliente;
             Actualizar();
         }
 
         private void EditarUsuario()
         {
-            throw new NotImplementedException();
+            if (usuario != null)
+            {
+                if (usuarioCatalogo.Validar(usuario, out List<string> errores))
+                {
+                    usuarioCatalogo.Editar(usuario);
+                    
+                    usuario = new();
+                    Modo = ModoVistas.VerAdmUsuarios;
+                    Actualizar();
+                }
+                else
+                {
+
+                    foreach (var item in errores)
+                    {
+                        Error = $"{Error} {item} {Environment.NewLine}";
+                    }
+                    Actualizar();
+                }
+                Error = "";
+
+            }
         }
 
         private void ComprarProducto()
@@ -51,7 +90,9 @@ namespace ProyectoBBDD.ViewModels
 
         private void VerEditarUsuario(int obj)
         {
-            throw new NotImplementedException();
+            usuario = usuarioCatalogo.GetUsuarioId(obj);
+            Modo = ModoVistas.VerEditarUsuario;
+            Actualizar();
         }
 
         private void CargarProductos()

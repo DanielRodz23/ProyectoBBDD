@@ -43,7 +43,7 @@
                 <ContentControl.Resources>
                     <local:LoginView x:Key="LoginView"></local:LoginView>
                     <AdmViews:IndexAdministrador x:Key="VerAdm"></AdmViews:IndexAdministrador>
-                    <ClientViews:VerCliente x:Key="VerCliente"></ClientViews:VerCliente>
+                    <ClientViews:IndexCliente x:Key="VerCliente"></ClientViews:IndexCliente>
                     <local:VerRegistrarUsuario x:Key="VerRegistrarUsuario"></local:VerRegistrarUsuario>
 
                 </ContentControl.Resources>
