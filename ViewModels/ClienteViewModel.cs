@@ -24,6 +24,7 @@ namespace ProyectoBBDD.ViewModels
         public Productos? Productos { get; set; }
         public ObservableCollection<Productos> ListaProductos { get; set; } =new ObservableCollection<Productos>();
         public ICommand VerEditarUsuarioCommand { get; set; }
+        public ICommand VerComprarProductoCommand { get; set; }
         public ICommand ComprarProductoCommand {get;set;}
         public ICommand EditarUsuarioCommand {get;set;}
         public ICommand CancelarCommand { get; set; }
@@ -33,12 +34,21 @@ namespace ProyectoBBDD.ViewModels
         public ClienteViewModel()
         {
             VerEditarUsuarioCommand = new RelayCommand<int>(VerEditarUsuario);
+            VerComprarProductoCommand = new RelayCommand<int>(verComprarProducto);
             ComprarProductoCommand = new RelayCommand(ComprarProducto);
             EditarUsuarioCommand = new RelayCommand(EditarUsuario);
             CancelarCommand = new RelayCommand(Cancelar);
             RegresarCommand = new RelayCommand(Regresar);
             Modo = ModoVistas.VerCliente;
+            
             CargarProductos();
+            Actualizar();
+        }
+
+        private void verComprarProducto(int obj)
+        {
+            Productos = productosCatalogo.GetProductoId(obj);
+            Modo = ModoVistas.VerComprarProducto;
             Actualizar();
         }
 

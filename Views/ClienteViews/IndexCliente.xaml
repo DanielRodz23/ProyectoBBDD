@@ -26,7 +26,7 @@
                 </Style>
             </StackPanel.Resources>
             <Border>
-                <Button Command="{Binding VerEditarUsuarioCommand}" CommandParameter="{Binding usuario.Id}">Ver Editar Usuario</Button>
+                <Button Command="{Binding VerEditarUsuarioCommand}" CommandParameter="{Binding DataContext.Usuario.Id, RelativeSource={RelativeSource AncestorType={x:Type vw:PrincipalView}}}">Ver Editar Usuario</Button>
             </Border>
         </StackPanel>
         <!--ContentControl que contiene todos los datos-->

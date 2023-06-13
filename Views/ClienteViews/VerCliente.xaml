@@ -7,6 +7,7 @@
              xmlns:vm="clr-namespace:ProyectoBBDD.ViewModels"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
+             x:Name="verCliente"
              d:DesignHeight="450" d:DesignWidth="1200">
     
     <DockPanel>
@@ -93,16 +94,8 @@
                           
                                 <StackPanel 
                                      >
-                                    <Button
-  Style="{StaticResource MaterialDesignFloatingActionSecondaryDarkButton}"
-  ToolTip="MaterialDesignFloatingActionSecondaryDarkButton"
-                                        Width="40" Height="40">
-                                        <materialDesign:PackIcon
-    Kind="Plus"
-    Height="30"
-    Width="30" />
-                                    </Button>
-                                    <Button Width="100" Content="Accion" Margin="0,3"></Button>
+
+                                    <Button Width="100" Content="Comprar Producto" Margin="0,3" Command="{Binding Source={x:Reference verCliente},Path=DataContext.VerComprarProductoCommand}" CommandParameter="{Binding Id}"></Button>
                                     <Button Width="100" Content="Accion" Margin="0,3"></Button>
                             </StackPanel>
                                 <Border Background="Transparent">
