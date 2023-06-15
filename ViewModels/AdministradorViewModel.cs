@@ -24,10 +24,12 @@ namespace ProyectoBBDD.ViewModels
         public Productos? producto { get; set; }
         public Usuarios? usuario { get; set;}
         public Roles? Rol { get; set; } = new Roles();
+        public Registrocompras? registrocompras { get; set; } = new();
         public string Error { get; set; } = "";
         public ObservableCollection<Productos> productos { get; set; }=new ObservableCollection<Productos>();
         public ObservableCollection<Usuarios> usuarios { get; set; } = new ObservableCollection<Usuarios>();
         public ObservableCollection<Roles> ListaRoles { get; set; }= new ObservableCollection<Roles>();
+        public ObservableCollection<Registrocompras> ListaRegistros { get; set; }=new ObservableCollection<Registrocompras>();
         public ModoVistas Modo {  get; set; }
         public ICommand VerRegistrarProductoCommand { get; set; }
         public ICommand RegistrarProductoCommand { get; set; }
@@ -47,6 +49,7 @@ namespace ProyectoBBDD.ViewModels
         public ICommand RegresarVerUsuariosCommand { get; set; }
         public ICommand CancelarVerUsuarioCommand { get; set; }
         public ICommand CancelarEditarCommand { get; set; }
+        public ICommand VerRegistrosComprasCommand { get;set;}
 
         public AdministradorViewModel()
         {
@@ -76,12 +79,18 @@ namespace ProyectoBBDD.ViewModels
             CancelarVerUsuarioCommand = new RelayCommand(CancelarVerUsuarios);
             //Metodos generales
             CancelarCommand = new RelayCommand(CancelarVerProductos);
+            VerRegistrosComprasCommand=new RelayCommand(VerRegistrosCompras);
 
             CargarRoles();
             CargarUsuarios();
             CargarProductos();
             VerProductos();
             Actualizar();
+        }
+
+        private void VerRegistrosCompras()
+        {
+            throw new NotImplementedException();
         }
 
         private void CancelarEditar()

@@ -31,6 +31,9 @@
             <Border>
                 <Button Command="{Binding VerAdmProductosCommand}">Ver Productos</Button>
             </Border>
+            <Border>
+                <Button Command="{Binding VerAdmProductosCommand}">Ver Registros de compras</Button>
+            </Border>
         </StackPanel>
         <!--ContentControl que contiene todos los datos-->
         <ContentControl>
