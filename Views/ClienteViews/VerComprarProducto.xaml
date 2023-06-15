@@ -8,22 +8,45 @@
              mc:Ignorable="d" 
              xmlns:vw="clr-namespace:ProyectoBBDD.Views"
              d:DesignHeight="450" d:DesignWidth="800" Background="White">
-    
+    <!--<UserControl.DataContext>
+        <vm:ClienteViewModel></vm:ClienteViewModel>
+    </UserControl.DataContext>-->
     <StackPanel>
+        <StackPanel.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="Margin" Value="5,0,0,0"/>
+            </Style>
+        </StackPanel.Resources>
         <TextBlock FontWeight="Bold" FontSize="50" HorizontalAlignment="Center">Comprar producto</TextBlock>
         <Label>Comprar este procesador:</Label>
         <TextBlock Text="{Binding Productos.Nombre}"></TextBlock>
         <Label>Descripción:</Label>
-        <TextBlock Text="{Binding Productos.Descripcion}"></TextBlock>
+        <TextBlock TextWrapping="Wrap" Text="{Binding Productos.Descripcion}"></TextBlock>
         <Label>Precio:</Label>
         <TextBlock>
             <Run Text="$"/>
             <Run Text="{Binding Productos.Precio}"/>
         </TextBlock>
-        <Label>Cantidad:</Label>
-        <TextBox Text="{Binding Cantidad}"></TextBox>
+        <Label Content="Cantidad:" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Grid.Column="1" Grid.Row="1" Content="-" Click="DecrementButton_Click" />
+            <TextBox IsEnabled="False" Text="{Binding Cantidad, UpdateSourceTrigger=PropertyChanged}" Grid.Column="0" Grid.RowSpan="2" x:Name="NumericUpDownTextBox" Width="50" Height="30" />
+            <Button Grid.Column="1" Grid.Row="0" Content="+" Click="IncrementButton_Click" />
+        </Grid>
+        <!--<TextBlock Text="{Binding Cantidad,UpdateSourceTrigger=PropertyChanged}" x:Name="txtCantidad" Visibility="Collapsed"/>-->
+        <TextBlock Foreground="Red" Text="{Binding Error}"></TextBlock>
+        <!--<Label>Cantidad:</Label>
+        <TextBox Text="{Binding Cantidad}"></TextBox>-->
         <WrapPanel HorizontalAlignment="Center">
-            <Button Command="{Binding ComprarProductoCommand}"  CommandParameter="{Binding DataContext.Usuario, RelativeSource={RelativeSource AncestorType={x:Type vw:PrincipalView}}}" Content="Comprar procesador" Width="200"></Button>
+            <Button Command="{Binding ComprarProductoCommand}" CommandParameter="{Binding DataContext.Usuario, RelativeSource={RelativeSource AncestorType={x:Type vw:PrincipalView}}}" Content="Comprar procesador" Width="200"></Button>
             <Button Command="{Binding RegresarCommand}">Regresar</Button>
         </WrapPanel>
     </StackPanel>

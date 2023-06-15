@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoBBDD.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,28 @@ namespace ProyectoBBDD.Views.ClienteViews
         public VerComprarProducto()
         {
             InitializeComponent();
+            NumericUpDownTextBox.Text = "0";
         }
+        private void IncrementButton_Click(object sender, RoutedEventArgs e)
+        {
+            int value = int.Parse(NumericUpDownTextBox.Text);
+            value++;
+            NumericUpDownTextBox.Text = value.ToString();
+        }
+
+        private void DecrementButton_Click(object sender, RoutedEventArgs e)
+        {
+            int value = int.Parse(NumericUpDownTextBox.Text);
+            if (value > 0)
+                value--;
+            NumericUpDownTextBox.Text = value.ToString();
+        }
+
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    txtCantidad.Text= string.Empty;
+        //    txtCantidad.Text=NumericUpDownTextBox.Text;
+        //    NumericUpDownTextBox.Clear();
+        //}
     }
 }

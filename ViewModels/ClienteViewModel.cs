@@ -13,12 +13,12 @@ using System.Windows.Input;
 
 namespace ProyectoBBDD.ViewModels
 {
-    public class ClienteViewModel:INotifyPropertyChanged
+    public class ClienteViewModel : INotifyPropertyChanged
     {
-        ProductosCatalogo productosCatalogo=new ProductosCatalogo();
+        ProductosCatalogo productosCatalogo = new ProductosCatalogo();
         UsuarioCatalogo usuarioCatalogo = new UsuarioCatalogo();
 
-       public string Error { get; set; }
+        public string Error { get; set; }
         public ModoVistas Modo { get; set; }
         public Usuarios? usuario { get; set; }
         public Productos? Productos { get; set; }
@@ -29,18 +29,18 @@ namespace ProyectoBBDD.ViewModels
             set
             {
                 cantidad = value;
-                Actualizar(nameof(Cantidad));
+                Actualizar();
             }
         }
-        public ObservableCollection<Productos> ListaProductos { get; set; } =new ObservableCollection<Productos>();
+        public ObservableCollection<Productos> ListaProductos { get; set; } = new ObservableCollection<Productos>();
         public ICommand VerEditarUsuarioCommand { get; set; }
         public ICommand VerComprarProductoCommand { get; set; }
-        public ICommand ComprarProductoCommand {get;set;}
-        public ICommand EditarUsuarioCommand {get;set;}
+        public ICommand ComprarProductoCommand { get; set; }
+        public ICommand EditarUsuarioCommand { get; set; }
         public ICommand CancelarCommand { get; set; }
         public ICommand RegresarCommand { get; set; }
-        
-       
+
+
         public ClienteViewModel()
         {
             VerEditarUsuarioCommand = new RelayCommand<int>(VerEditarUsuario);
@@ -50,7 +50,6 @@ namespace ProyectoBBDD.ViewModels
             CancelarCommand = new RelayCommand(Cancelar);
             RegresarCommand = new RelayCommand(Regresar);
             Modo = ModoVistas.VerCliente;
-            
             CargarProductos();
             Actualizar();
         }
@@ -84,7 +83,7 @@ namespace ProyectoBBDD.ViewModels
                 if (usuarioCatalogo.Validar(usuario, out List<string> errores))
                 {
                     usuarioCatalogo.Editar(usuario);
-                    
+
                     usuario = new();
                     Modo = ModoVistas.VerAdmUsuarios;
                     Actualizar();
@@ -105,12 +104,20 @@ namespace ProyectoBBDD.ViewModels
 
         private void ComprarProducto(Usuarios obj)
         {
-            if (Productos != null)
+            Cantidad = 0;
+            Error = "";
+            if (Productos != null && Cantidad != 0)
             {
- usuarioCatalogo.ComprarProducto(Productos,obj,Cantidad);
-            Regresar();
+                usuarioCatalogo.ComprarProducto(Productos, obj, Cantidad);
+                CargarProductos();
+                Regresar();
             }
-           
+            else
+            {
+                Error = "La cantidad no puede ser 0";
+                Actualizar() ;
+            }
+
         }
 
         private void VerEditarUsuario(int obj)
@@ -128,7 +135,7 @@ namespace ProyectoBBDD.ViewModels
                 ListaProductos.Add(item);
             }
             Actualizar();
-            
+
         }
         private void Actualizar(string prop = null)
         {
