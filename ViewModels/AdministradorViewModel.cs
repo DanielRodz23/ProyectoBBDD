@@ -21,6 +21,7 @@ namespace ProyectoBBDD.ViewModels
         ProductosCatalogo productosCatalogo = new ProductosCatalogo();
         UsuarioCatalogo usuariosCatalogo = new UsuarioCatalogo();
         RolesCatalogo rolesCatalogo = new RolesCatalogo();
+        RegistrosCatalogo registroscatalogo = new RegistrosCatalogo();
         public Productos? producto { get; set; }
         public Usuarios? usuario { get; set;}
         public Roles? Rol { get; set; } = new Roles();
@@ -29,7 +30,7 @@ namespace ProyectoBBDD.ViewModels
         public ObservableCollection<Productos> productos { get; set; }=new ObservableCollection<Productos>();
         public ObservableCollection<Usuarios> usuarios { get; set; } = new ObservableCollection<Usuarios>();
         public ObservableCollection<Roles> ListaRoles { get; set; }= new ObservableCollection<Roles>();
-        public ObservableCollection<Registrocompras> ListaRegistros { get; set; }=new ObservableCollection<Registrocompras>();
+        public List<Compra> ListaRegistros { get; set; }=new List<Compra>();
         public ModoVistas Modo {  get; set; }
         public ICommand VerRegistrarProductoCommand { get; set; }
         public ICommand RegistrarProductoCommand { get; set; }
@@ -90,7 +91,10 @@ namespace ProyectoBBDD.ViewModels
 
         private void VerRegistrosCompras()
         {
-            throw new NotImplementedException();
+            ListaRegistros.Clear();
+            ListaRegistros = registroscatalogo.GetRegistros();
+            Modo = ModoVistas.VerRegistrosCompras;
+            Actualizar();
         }
 
         private void CancelarEditar()

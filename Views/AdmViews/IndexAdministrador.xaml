@@ -32,7 +32,7 @@
                 <Button Command="{Binding VerAdmProductosCommand}">Ver Productos</Button>
             </Border>
             <Border>
-                <Button Command="{Binding VerAdmProductosCommand}">Ver Registros de compras</Button>
+                <Button Command="{Binding VerRegistrosComprasCommand}">Ver Registros de compras</Button>
             </Border>
         </StackPanel>
         <!--ContentControl que contiene todos los datos-->
@@ -46,6 +46,7 @@
                 <local:EliminarProducto x:Key="EliminarProducto"></local:EliminarProducto>
                 <local:EliminarUsuario x:Key="EliminarUsuario"></local:EliminarUsuario>
                 <local:VerAdmUsuarios x:Key="VerAdmUsuarios"></local:VerAdmUsuarios>
+                <local:VerRegistrosCompras x:Key="VerRegistros"></local:VerRegistrosCompras>
             </ContentControl.Resources>
             <ContentControl.Style>
                 <Style TargetType="ContentControl">
@@ -74,6 +75,9 @@
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Modo}" Value="{x:Static vw:ModoVistas.VerEditarUsuario}">
                             <Setter Property="Content" Value="{StaticResource EditarUsuario}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Modo}" Value="{x:Static vw:ModoVistas.VerRegistrosCompras}">
+                            <Setter Property="Content" Value="{StaticResource VerRegistros}"/>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>

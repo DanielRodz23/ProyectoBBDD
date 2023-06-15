@@ -27,6 +27,7 @@ namespace ProyectoBBDD.Catalogos
         public void ComprarProducto(Productos p,Usuarios u,int cantidad)
         {
             context.Database.ExecuteSqlRaw($"call Registrar_Compra ({p.Id}, {u.Id},{cantidad})");
+            context.Entry(p).Reload();
             context.SaveChanges();
         }
         public Usuarios? GetUsuarioId(int id)
