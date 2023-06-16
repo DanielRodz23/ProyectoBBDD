@@ -14,12 +14,6 @@
     <DockPanel>
         <!--StackPanel que contiene los botones de la izquierda-->
         <StackPanel DockPanel.Dock="Left" Background="#3c4c8f">
-            <!--<StackPanel.Background>
-                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                    <GradientStop Color="Blue" Offset="0"/>
-                    <GradientStop Color="LightBlue" Offset=".3"/>
-                </LinearGradientBrush>
-            </StackPanel.Background>-->
             <StackPanel.Resources>
                 <Style TargetType="Border">
                     <Setter Property="Padding" Value="10"/>

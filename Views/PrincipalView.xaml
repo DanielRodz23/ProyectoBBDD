@@ -26,12 +26,11 @@
     <DockPanel>
         <!--Titulo-->
         <Border DockPanel.Dock="Top" Height="100" Background="#131c46">
-            <Grid >
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width=".1*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <!--<Border Grid.Column="0" Background="White" Height="100" Width="100"></Border>-->
                 <Image Height="Auto" Grid.Column="0" Source="Logo.jpg" />
                 <DockPanel Grid.Column="1" Margin="-50,0,0,0">
                     <DockPanel.Resources>
@@ -43,7 +42,7 @@
                             </Style.Triggers>
                         </Style>
                     </DockPanel.Resources>
-                    <TextBlock Style="{StaticResource CerrarSesionStyle}" Width="100" HorizontalAlignment="Right" Margin="0,0,10,0"
+                    <TextBlock Style="{StaticResource CerrarSesionStyle}" Width="Auto" HorizontalAlignment="Right" Margin="0,0,10,0"
                            DockPanel.Dock="Bottom" Background="#131c46" FontSize="15" Foreground="White">
                         (
                          <Hyperlink 

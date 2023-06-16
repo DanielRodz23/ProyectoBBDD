@@ -7,10 +7,6 @@
              xmlns:vm="clr-namespace:ProyectoBBDD.ViewModels"
              x:Name="verAdministrador"
              mc:Ignorable="d">
-    <!--<UserControl.DataContext>
-        <vm:AdministradorViewModel></vm:AdministradorViewModel>
-    </UserControl.DataContext>-->
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -24,20 +20,12 @@
             <ItemsControl ItemsSource="{Binding productos}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <!--<DataTemplate.Triggers>
-                            <DataTrigger Binding="{Binding Estado}" Value="0">
-                                <Setter Property="TextBlock.Foreground" Value="Red"></Setter>
-                            </DataTrigger>
-                        </DataTemplate.Triggers>-->
                         <DockPanel>
                             <Grid Margin="0,10,0,0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width=".5*"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width=".4*"/>
-                                    <!--<ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>-->
                                 </Grid.ColumnDefinitions>
                                 <Border Grid.ColumnSpan="3" x:Name="brdBorder" CornerRadius="10" Margin="5,0,0,0">
                                     <Border.Style>

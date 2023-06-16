@@ -8,47 +8,54 @@
              mc:Ignorable="d" 
              xmlns:vw="clr-namespace:ProyectoBBDD.Views"
              d:DesignHeight="450" d:DesignWidth="800" >
-    <!--<UserControl.DataContext>
-        <vm:ClienteViewModel></vm:ClienteViewModel>
-    </UserControl.DataContext>-->
     <StackPanel>
         <StackPanel.Resources>
             <Style TargetType="TextBlock">
                 <Setter Property="Margin" Value="5,0,0,0"/>
                 <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontSize" Value="20"/>
+                
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontWeight" Value="Bold"/>
             </Style>
         </StackPanel.Resources>
-        <TextBlock FontWeight="Bold" FontSize="50" HorizontalAlignment="Center">Comprar producto</TextBlock>
-        <Label>Comprar este procesador:</Label>
-        <TextBlock Text="{Binding Productos.Nombre}"></TextBlock>
-        <Label>Descripción:</Label>
-        <TextBlock TextWrapping="Wrap" Text="{Binding Productos.Descripcion}"></TextBlock>
-        <Label>Precio:</Label>
-        <TextBlock>
+        <StackPanel HorizontalAlignment="Center">
+            <TextBlock FontWeight="Bold" FontSize="50" HorizontalAlignment="Center">Comprar producto</TextBlock>
+            <Label>Comprar este procesador:</Label>
+            <TextBlock Text="{Binding Productos.Nombre}"></TextBlock>
+            <Label>Descripción:</Label>
+            <TextBlock TextWrapping="Wrap" Text="{Binding Productos.Descripcion}"></TextBlock>
+            <Label>Precio:</Label>
+            <TextBlock>
             <Run Text="$"/>
             <Run Text="{Binding Productos.Precio}"/>
-        </TextBlock>
-        <Label>Stock:</Label>
-        <TextBlock x:Name="txtStock" Text="{Binding Productos.Stock}">
-        </TextBlock>
-        <Label Content="Cantidad a comprar:" />
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Button Grid.Column="1" Grid.Row="1" Content="-" Click="DecrementButton_Click" />
-            <TextBox Foreground="White" IsEnabled="False" Text="{Binding Cantidad, UpdateSourceTrigger=PropertyChanged}" Grid.Column="0" Grid.RowSpan="2" x:Name="NumericUpDownTextBox" Width="50" Height="30" />
-            <Button Grid.Column="1" Grid.Row="0" Content="+" Click="IncrementButton_Click" />
-        </Grid>
-        <!--<TextBlock Text="{Binding Cantidad,UpdateSourceTrigger=PropertyChanged}" x:Name="txtCantidad" Visibility="Collapsed"/>-->
-        <TextBlock x:Name="txtError" Foreground="Red" Text="{Binding Error}"></TextBlock>
-        <!--<Label>Cantidad:</Label>
-        <TextBox Text="{Binding Cantidad}"></TextBox>-->
+            </TextBlock>
+            <Label>Stock:</Label>
+            <TextBlock x:Name="txtStock" Text="{Binding Productos.Stock}">
+            </TextBlock>
+            <Label Content="Cantidad a comprar:" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Grid.Column="1" Grid.Row="1" Content="-" Click="DecrementButton_Click" />
+                <TextBox Foreground="White" IsEnabled="False" 
+                     Text="{Binding Cantidad, UpdateSourceTrigger=PropertyChanged}" 
+                     Grid.Column="0" Grid.RowSpan="2" 
+                     x:Name="NumericUpDownTextBox" 
+                     Width="50" 
+                     Height="30" />
+                <Button Grid.Column="1" Grid.Row="0" Content="+" Click="IncrementButton_Click" />
+            </Grid>
+            <TextBlock x:Name="txtError" Foreground="Red" Text="{Binding Error}"></TextBlock>
+        </StackPanel>
         <WrapPanel HorizontalAlignment="Center" Margin="50">
             <WrapPanel.Resources>
                 <Style TargetType="Border">
@@ -59,7 +66,6 @@
                 <Button Command="{Binding ComprarProductoCommand}" CommandParameter="{Binding DataContext.Usuario, RelativeSource={RelativeSource AncestorType={x:Type vw:PrincipalView}}}" Content="Comprar procesador" Width="200"></Button>
             </Border>
             <Border Margin="30,0,0,0">
-
                 <Button Command="{Binding RegresarCommand}">Regresar</Button>
             </Border>
         </WrapPanel>

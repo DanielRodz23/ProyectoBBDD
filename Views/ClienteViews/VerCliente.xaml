@@ -11,30 +11,17 @@
              d:DesignHeight="450" d:DesignWidth="1200" Background="Transparent">
 
     <DockPanel Background="Transparent">
-        <!--Podemos quitar el titulo y poner un borde que siempre este en la parte de arriba, y controlamos su contenido dependiendo de la ventana-->
-        <!--<Border DockPanel.Dock="Top" Height="80" Background="LightBlue" VerticalAlignment="Top">
-            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Este es el titulo" Foreground="White" FontSize="50"></TextBlock>
-        </Border>-->
-
         <!--Aqui empieza el ScrollViewer-->
         <ScrollViewer Background="Transparent" Grid.Row="1" VerticalScrollBarVisibility="Visible">
             <ItemsControl ItemsSource="{Binding ListaProductos}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <!--<DataTemplate.Triggers>
-                            <DataTrigger Binding="{Binding Estado}" Value="0">
-                                <Setter Property="TextBlock.Foreground" Value="Red"></Setter>
-                            </DataTrigger>
-                        </DataTemplate.Triggers>-->
                         <DockPanel Background="Transparent">
                             <Grid Margin="0,10,0,0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width=".5*"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width=".4*"/>
-                                    <!--<ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>-->
                                 </Grid.ColumnDefinitions>
                                 <Border Grid.ColumnSpan="3" x:Name="brdBorder" CornerRadius="10" Margin="5,0,0,0">
                                     <Border.Style>
@@ -94,7 +81,8 @@
                                         Margin="0,0,0,0" 
                                      VerticalAlignment="Center"  >
                                         <StackPanel>
-                                            <Button Width="100" 
+                                            <Border Width="200">
+                                                <Button Width="Auto" 
                                                     Content="Comprar Producto" 
                                                     Margin="0,3" 
                                                     Command="{
@@ -102,6 +90,7 @@
                                                 Path=DataContext.VerComprarProductoCommand
                                                 }" 
                                                     CommandParameter="{Binding Id}"></Button>
+                                            </Border>
                                         </StackPanel>
                                         <Border Background="Transparent">
                                             <Border.Resources>
@@ -123,137 +112,5 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-
-        <!--<ScrollViewer BorderBrush="{x:Null}">
-            <ItemsControl ItemsSource="{Binding ListaProductos}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <UniformGrid Columns="3"
-                                     Rows="5"></UniformGrid>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <DataTemplate.Triggers>
-                            <DataTrigger Binding="{Binding Estado}" Value="0">
-                                <Setter Property="TextBlock.Foreground" Value="Red"></Setter>
-                            </DataTrigger>
-                        </DataTemplate.Triggers>
-                        <Grid Margin="0,10,0,0" Height="120"
-                              Width="auto">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Border x:Name="brdBorder" CornerRadius="10" Margin="5,0,0,0" 
-                                    Grid.ColumnSpan="3">
-                                <Border.Style>
-                                    <Style TargetType="Border">
-                                        <Setter Property="Background" Value="LightBlue"></Setter>
-                                        <Setter Property="BorderBrush" Value="Black"/>
-                                        <Setter Property="BorderThickness" Value="3"></Setter>
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Estado}" Value="0">
-                                                <Setter Property="Background" Value="White"/>
-                                                <Setter Property="BorderBrush" Value="Red"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Border.Style>
-                            </Border>
-                            <Image Grid.Column="0" 
-                                   Source="{Binding Imagen}"
-                                   Width="100"
-                                   Stretch="Uniform" 
-                                   Margin="15,0,0,0"/>
-                            <WrapPanel Grid.Column="1"
-                                       Margin="0,20">
-                                <WrapPanel.Resources>
-                                    <Style TargetType="TextBlock">
-                                        <Setter Property="VerticalAlignment" Value="Center"/>
-                                    </Style>
-                                </WrapPanel.Resources>
-                                <TextBlock Margin="10">
-                                    <Run Text="Sku:" FontWeight="Bold"></Run>
-                                    <Run Text="{Binding Sku}"/>
-                                </TextBlock>
-                                <TextBlock Margin="10">
-                                    <Run Text="Nombre:" FontWeight="Bold"></Run>
-                                    <Run Text="{Binding Nombre}"/>
-                                </TextBlock>
-                                <TextBlock Margin="10">
-                                    <Run Text="Precio:" FontWeight="Bold"></Run>
-                                    <Run Text="$"/><Run Text="{Binding Precio}"/>
-                                </TextBlock>
-                                <TextBlock Margin="10">
-                                    <Run Text="Stock:" FontWeight="Bold"></Run>
-                                    <Run Text="{Binding Stock}"/>
-                                </TextBlock>
-                                -->
-        <!--Descripción del producto-->
-        <!--
-                                <TextBlock TextWrapping="Wrap" Margin="10">
-                                    <Run Text="Descripción:" FontWeight="Bold"></Run>
-                                    <Run  Text="{Binding Descripcion}"/>
-                                </TextBlock>
-                            </WrapPanel>
-
-                            -->
-        <!--<WrapPanel Grid.Column="1" Orientation="Horizontal">
-                                <WrapPanel.Resources>
-                                    <Style TargetType="TextBlock">
-                                        <Setter Property="VerticalAlignment" Value="Center"/>
-                                    </Style>
-                                </WrapPanel.Resources>
-                                <TextBlock Margin="10">
-                                    <Run Text="Sku:" FontWeight="Bold"></Run>
-                                    <Run Text="{Binding Sku}"/>
-                                </TextBlock>
-                                <TextBlock Margin="10">
-                                    <Run Text="Nombre:" FontWeight="Bold"></Run>
-                                    <Run Text="{Binding Nombre}"/>
-                                </TextBlock>
-                                <TextBlock Margin="10">
-                                    <Run Text="Precio:" FontWeight="Bold"></Run>
-                                    <Run Text="$"/><Run Text="{Binding Precio}"/>
-                                </TextBlock>
-                                <TextBlock Margin="10">
-                                    <Run Text="Stock:" FontWeight="Bold"></Run>
-                                    <Run Text="{Binding Stock}"/>
-                                </TextBlock>
-                                <TextBlock TextWrapping="Wrap" Margin="10"
-                                                   TextAlignment="Justify" FontWeight="Bold">
-                                    <Run Text="Descripción:" FontWeight="Bold"></Run>
-                                    <Run  Text="{Binding Descripcion}"/>
-                                </TextBlock>
-                            </WrapPanel>-->
-        <!--
-                            <Grid Grid.Column="2" 
-                                        DockPanel.Dock="Right" 
-                                        Margin="0,0,0,0" 
-                                     VerticalAlignment="Center"  >
-                                <StackPanel>
-                                    <Button Width="100" Content="Comprar Producto" Margin="0,3" Command="{Binding Source={x:Reference verCliente},Path=DataContext.VerComprarProductoCommand}" CommandParameter="{Binding Id}"></Button>
-                                    <Button Width="100" Content="Accion" Margin="0,3"></Button>
-                                </StackPanel>
-                                <Border Background="Transparent">
-                                    <Border.Resources>
-                                        <Style TargetType="Border">
-                                            <Setter Property="Visibility" Value="Hidden" />
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding Estado}" Value="0">
-                                                    <Setter Property="Visibility" Value="Visible"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Border.Resources>
-                                </Border>
-                            </Grid>
-                        </Grid>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>-->
     </DockPanel>
 </UserControl>
