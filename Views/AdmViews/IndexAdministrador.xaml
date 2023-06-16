@@ -7,19 +7,19 @@
              mc:Ignorable="d" 
              xmlns:vm="clr-namespace:ProyectoBBDD.ViewModels"
              xmlns:vw="clr-namespace:ProyectoBBDD.Views"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" >
     <UserControl.DataContext>
         <vm:AdministradorViewModel></vm:AdministradorViewModel>
     </UserControl.DataContext>
     <DockPanel>
         <!--StackPanel que contiene los botones de la izquierda-->
-        <StackPanel DockPanel.Dock="Left">
-            <StackPanel.Background>
+        <StackPanel DockPanel.Dock="Left" Background="#3c4c8f">
+            <!--<StackPanel.Background>
                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                     <GradientStop Color="Blue" Offset="0"/>
                     <GradientStop Color="LightBlue" Offset=".3"/>
                 </LinearGradientBrush>
-            </StackPanel.Background>
+            </StackPanel.Background>-->
             <StackPanel.Resources>
                 <Style TargetType="Border">
                     <Setter Property="Padding" Value="10"/>
@@ -55,11 +55,9 @@
                         <DataTrigger Binding="{Binding Modo}" Value="{x:Static vw:ModoVistas.VerRegistroPorCliente}">
                             <Setter Property="Content" Value="{StaticResource RegistroPorCliente}"/>
                         </DataTrigger>
-                        
                         <DataTrigger Binding="{Binding Modo}" Value="{x:Static vw:ModoVistas.VerAdmUsuarios}">
                             <Setter Property="Content" Value="{StaticResource VerAdmUsuarios}"/>
                         </DataTrigger>
-                        
                         <DataTrigger Binding="{Binding Modo}" Value="{x:Static vw:ModoVistas.VerAdministrador}">
                             <Setter Property="Content" Value="{StaticResource verAdministrador}"/>
                         </DataTrigger>

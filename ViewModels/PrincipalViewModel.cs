@@ -115,14 +115,14 @@ namespace ProyectoBBDD.ViewModels
         [Authorize(Roles = "Cliente")]
         private void AccionesUsuarioCliente()
         {
-            this.Titulo = "Sesion de cliente";
+            this.Titulo = "Sesión de cliente";
             Modo = ModoVistas.VerCliente;
             Actualizar();
         }
         [Authorize(Roles = "Administrador")]
         private void AccionesUsuarioAdministrador()
         {
-            this.Titulo = "Sesion de administrador";
+            this.Titulo = "Sesión de administrador";
             Modo = ModoVistas.VerAdministrador;
             Actualizar();
         }

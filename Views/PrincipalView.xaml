@@ -8,13 +8,24 @@
         xmlns:AdmViews="clr-namespace:ProyectoBBDD.Views.AdmViews"
         xmlns:ClientViews="clr-namespace:ProyectoBBDD.Views.ClienteViews"
         mc:Ignorable="d"
-        Title="PrincipalView" WindowState="Maximized">
+        Title="PrincipalView" WindowState="Maximized" >
     <Window.DataContext>
         <vm:PrincipalViewModel></vm:PrincipalViewModel>
     </Window.DataContext>
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0.5,0" EndPoint=".5,1">
+            <GradientStop Color="#131c46" Offset="0"/>
+            <GradientStop Color="#3591d8" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <!--<Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Window.Resources>-->
     <DockPanel>
         <!--Titulo-->
-        <Border DockPanel.Dock="Top" Height="100" Background="Blue">
+        <Border DockPanel.Dock="Top" Height="100" Background="#131c46">
             <DockPanel>
                 <DockPanel.Resources>
                     <Style TargetType="TextBlock" x:Key="CerrarSesionStyle">
@@ -26,15 +37,15 @@
                     </Style>
                 </DockPanel.Resources>
                 <TextBlock Style="{StaticResource CerrarSesionStyle}" Width="100" HorizontalAlignment="Right" Margin="0,0,10,0"
-                           DockPanel.Dock="Bottom" Background="Blue" FontSize="15" Foreground="Yellow">
+                           DockPanel.Dock="Bottom" Background="#131c46" FontSize="15" Foreground="White">
                         (
                          <Hyperlink 
                              Command="{Binding CerrarSesionCommand}" 
-                             Foreground="Yellow">Cerrar sesión
+                             Foreground="White">Cerrar sesión
                          </Hyperlink>
                         )
                 </TextBlock>
-                <TextBlock VerticalAlignment="Top" Margin="0,10,0,0" HorizontalAlignment="Center" Text="{Binding Titulo}" Foreground="White" FontSize="50"></TextBlock>
+                <TextBlock FontFamily="century gothic" VerticalAlignment="Top" Margin="0,10,0,0" HorizontalAlignment="Center" Text="{Binding Titulo}" Foreground="White" FontSize="50"></TextBlock>
             </DockPanel>
         </Border>
         <DockPanel>
