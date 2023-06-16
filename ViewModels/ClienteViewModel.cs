@@ -97,7 +97,7 @@ namespace ProyectoBBDD.ViewModels
             }
         }
 
-        private void Regresar()
+        public void Regresar()
         {
             Modo = ModoVistas.VerCliente;
             Actualizar();

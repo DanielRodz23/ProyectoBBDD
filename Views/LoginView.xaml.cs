@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoBBDD.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,6 +31,10 @@ namespace ProyectoBBDD.Views
             txtPassword.Text = "";
             txtPassword.Text = pwb1.Password;
             pwb1.Clear();
+            //AdministradorViewModel admin = new();
+            //admin.Modo = ModoVistas.VerAdministrador;
+            //ClienteViewModel cli = new();
+            //cli.Regresar();
         }
     }
 }
