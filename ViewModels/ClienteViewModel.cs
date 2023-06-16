@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -135,6 +136,7 @@ namespace ProyectoBBDD.ViewModels
             Error = "";
             if (Productos != null && Cantidad != 0)
             {
+                var x = Thread.CurrentPrincipal.Identity;
                 usuarioCatalogo.ComprarProducto(Productos, obj, Cantidad);
                 CargarProductos();
                 Regresar();

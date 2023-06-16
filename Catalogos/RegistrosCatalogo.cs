@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using ProyectoBBDD.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProyectoBBDD.Catalogos
 {
@@ -24,6 +25,12 @@ namespace ProyectoBBDD.Catalogos
                             Cantidad = rc.Cantidad
                         };
             return query.ToList();
+        }
+        public IEnumerable<Registrocompras> Lista()
+        {
+            return context.Registrocompras.Include(x => x.IdProductoNavigation)
+                .ThenInclude(y => y.Registrocompras)
+                .ThenInclude(z => z.IdUsuarioNavigation);
         }
         //public IEnumerable<Registrocompras> GetRegistro
     }
