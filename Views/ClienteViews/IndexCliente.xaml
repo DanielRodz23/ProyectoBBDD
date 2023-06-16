@@ -26,6 +26,11 @@
                 </Style>
             </StackPanel.Resources>
             <Border>
+                <Button Command="{Binding RegresarCommand}" 
+                        >Ver Productos</Button>
+
+            </Border>
+            <Border>
                 <Button Command="{Binding VerEditarUsuarioCommand}" CommandParameter="{Binding DataContext.Usuario.Id, RelativeSource={RelativeSource AncestorType={x:Type vw:PrincipalView}}}">Ver Editar Usuario</Button>
             </Border>
         </StackPanel>
