@@ -12,15 +12,16 @@
     </UserControl.DataContext>-->
     <Grid>
         <Grid.Resources>
-            <Style TargetType="DataGrid">
+            <Style TargetType="Border">
+                <Setter Property="Visibility" Value="Visible"/>
                 <Style.Triggers>
-                    <DataTrigger Binding="{Binding HayDatos}" Value="False">
+                    <DataTrigger Binding="{Binding HayDatos}" Value="true">
                         <Setter Property="Visibility" Value="Collapsed"/>
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
         </Grid.Resources>
-        <TextBlock FontWeight="Bold" FontSize="100" TextAlignment="Center" Text="No hay nada"/>
+        
         <DataGrid  ItemsSource="{Binding ListaRegistrosCompletos}" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="Auto" Header="Imagen">
@@ -36,5 +37,8 @@
                                     Binding="{Binding Cantidad}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Border Height="auto" Width="Auto" Background="White">
+            <TextBlock FontWeight="Bold" FontSize="100" TextAlignment="Center" Text="No hay nada"/>
+        </Border>
     </Grid>
 </UserControl>

@@ -54,6 +54,7 @@ namespace ProyectoBBDD.ViewModels
 
                     Usuario = new();
                     Modo = ModoVistas.LoginView;
+                    Titulo = "Inicio de sesión";
                     Actualizar();
                 }
                 else
@@ -129,6 +130,7 @@ namespace ProyectoBBDD.ViewModels
 
         private void VerRegistrarUsuario()
         {
+            this.Titulo = "Registrar Usuario";
             Usuario = new()
             {
                 Idrol = 2

@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:ProyectoBBDD.Views.AdmViews"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel Background="white">
+    <StackPanel >
 
-        <TextBlock Padding="10" FontSize="20" FontWeight="Bold"  
+        <TextBlock Foreground="White" Padding="10" FontSize="20" FontWeight="Bold"  
                        HorizontalAlignment="Center" >¿Desea eliminar el producto con el nombre de:
             <Run Text="{Binding producto.Nombre}" ></Run><Run>?</Run>
         </TextBlock>

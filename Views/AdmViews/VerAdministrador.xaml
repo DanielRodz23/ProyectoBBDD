@@ -88,16 +88,16 @@
                                 <!--Botones-->
                                 <StackPanel Grid.Column="2" Margin="0,0,0,0" VerticalAlignment="Center" Orientation="Vertical">
                                     <Border Padding="10">
-                                        <Button  Width="100" 
+                                        <Button  Width="Auto" 
                                              Command="{Binding Source={x:Reference verAdministrador},Path=DataContext.VerEditarProductoCommand}" 
                                              CommandParameter="{Binding Id}">
-                                            Editar P</Button>
+                                            Editar Producto</Button>
                                     </Border>
                                     <Border Padding="10">
-                                        <Button  Width="100" 
+                                        <Button  Width="Auto" 
                                          Command="{Binding Source={x:Reference verAdministrador},Path=DataContext.VerEliminarProductoCommand}" 
                                          CommandParameter="{Binding Id}">
-                                            Eliminar P</Button>
+                                            Eliminar Producto</Button>
                                     </Border>
                                 </StackPanel>
                             </Grid>
