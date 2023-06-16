@@ -32,13 +32,16 @@ namespace ProyectoBBDD.ViewModels
                 Actualizar();
             }
         }
+        public bool HayDatos { get; set; } = false;
         public ObservableCollection<Productos> ListaProductos { get; set; } = new ObservableCollection<Productos>();
+        public List<Registrocompras> ListaRegistrosCompletos { get; set; } = new();
         public ICommand VerEditarUsuarioCommand { get; set; }
         public ICommand VerComprarProductoCommand { get; set; }
         public ICommand ComprarProductoCommand { get; set; }
         public ICommand EditarUsuarioCommand { get; set; }
         public ICommand CancelarCommand { get; set; }
         public ICommand RegresarCommand { get; set; }
+        public ICommand VerMiRegistroComprasCommand { get; set; }
 
 
         public ClienteViewModel()
@@ -47,10 +50,33 @@ namespace ProyectoBBDD.ViewModels
             VerComprarProductoCommand = new RelayCommand<int>(verComprarProducto);
             ComprarProductoCommand = new RelayCommand<Usuarios>(ComprarProducto);
             EditarUsuarioCommand = new RelayCommand(EditarUsuario);
+            VerMiRegistroComprasCommand = new RelayCommand<int>(VerMiRegistro);
             CancelarCommand = new RelayCommand(Cancelar);
             RegresarCommand = new RelayCommand(Regresar);
             Modo = ModoVistas.VerCliente;
             CargarProductos();
+            Actualizar();
+        }
+
+        private void VerMiRegistro(int id)
+        {
+            //Cambiar vista
+            Modo = ModoVistas.VerMiPropioRegistro;
+            //Cargar Datos
+            var temp = usuarioCatalogo.GetUsuarioId(id);
+            ListaRegistrosCompletos.Clear();
+            if (!(temp.Registrocompras.Count == 0))
+            {
+                HayDatos = true;
+                foreach (var item in temp.Registrocompras)
+                {
+                    ListaRegistrosCompletos.Add(item);
+                }
+            }
+            else
+            {
+                HayDatos = false;
+            }
             Actualizar();
         }
 

@@ -51,6 +51,7 @@
             </ContentControl.Resources>
             <ContentControl.Style>
                 <Style TargetType="ContentControl">
+                    <Setter Property="Content" Value="{StaticResource verAdministrador}"/>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding Modo}" Value="{x:Static vw:ModoVistas.VerRegistroPorCliente}">
                             <Setter Property="Content" Value="{StaticResource RegistroPorCliente}"/>

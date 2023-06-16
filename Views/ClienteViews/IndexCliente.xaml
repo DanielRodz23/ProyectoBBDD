@@ -28,10 +28,21 @@
             <Border>
                 <Button Command="{Binding RegresarCommand}" 
                         >Ver Productos</Button>
-
             </Border>
             <Border>
-                <Button Command="{Binding VerEditarUsuarioCommand}" CommandParameter="{Binding DataContext.Usuario.Id, RelativeSource={RelativeSource AncestorType={x:Type vw:PrincipalView}}}">Ver Editar Usuario</Button>
+                <Button Command="{Binding VerEditarUsuarioCommand}" 
+                        CommandParameter="{Binding DataContext.Usuario.Id, RelativeSource={RelativeSource AncestorType={x:Type vw:PrincipalView}}}"
+                        >Ver Editar Usuario</Button>
+            </Border>
+            <Border>
+                <Button Command="{Binding VerMiRegistroComprasCommand}" 
+                        CommandParameter="{Binding DataContext.Usuario.Id, RelativeSource={RelativeSource AncestorType={x:Type vw:PrincipalView}}}" Height="Auto"
+                        >
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center" Text="Ver mi registro"/>
+                        <TextBlock HorizontalAlignment="Center" Text="de compras"/>
+                    </StackPanel>
+                </Button>
             </Border>
         </StackPanel>
         <!--ContentControl que contiene todos los datos-->
@@ -40,10 +51,15 @@
                 <local:VerCliente x:Key="VerCliente"></local:VerCliente>
                 <local:VerComprarProducto x:Key="VerComprarProducto"></local:VerComprarProducto>
                 <local:VerEditarUsuario x:Key="VerEditarUsuario"></local:VerEditarUsuario>
+                <local:VerMiRegistroDeCompras x:Key="VerMiPropioRegistro"/>
             </ContentControl.Resources>
             <ContentControl.Style>
                 <Style TargetType="ContentControl">
+                    <Setter Property="Content" Value="{StaticResource VerCliente}"/>
                     <Style.Triggers>
+                        <DataTrigger Binding="{Binding Modo}" Value="{x:Static vw:ModoVistas.VerMiPropioRegistro}">
+                            <Setter Property="Content" Value="{StaticResource VerMiPropioRegistro}"/>
+                        </DataTrigger>
                         <DataTrigger Binding="{Binding Modo}" Value="{x:Static vw:ModoVistas.VerCliente}">
                             <Setter Property="Content" Value="{StaticResource VerCliente}"/>
                         </DataTrigger>

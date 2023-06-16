@@ -11,6 +11,6 @@ namespace ProyectoBBDD.Views
         VerCliente,VerRegistrarUsuario,VerRegistrarProducto,
         VerEliminarProducto,VerEditarProducto,VerEditarUsuario,
         VerEliminarUsuario,VerComprarProducto,VerRegistrosCompras,
-        VerRegistroPorCliente
+        VerRegistroPorCliente, VerMiPropioRegistro
     }
 }
