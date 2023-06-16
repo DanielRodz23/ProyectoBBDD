@@ -23,15 +23,18 @@ namespace ProyectoBBDD.ViewModels
         RolesCatalogo rolesCatalogo = new RolesCatalogo();
         RegistrosCatalogo registroscatalogo = new RegistrosCatalogo();
         public Productos? producto { get; set; }
-        public Usuarios? usuario { get; set;}
+        public Usuarios? usuario { get; set; }
         public Roles? Rol { get; set; } = new Roles();
         public Registrocompras? registrocompras { get; set; } = new();
         public string Error { get; set; } = "";
-        public ObservableCollection<Productos> productos { get; set; }=new ObservableCollection<Productos>();
+        public ObservableCollection<Productos> productos { get; set; } = new ObservableCollection<Productos>();
         public ObservableCollection<Usuarios> usuarios { get; set; } = new ObservableCollection<Usuarios>();
-        public ObservableCollection<Roles> ListaRoles { get; set; }= new ObservableCollection<Roles>();
-        public List<Compra> ListaRegistros { get; set; }=new List<Compra>();
-        public ModoVistas Modo {  get; set; }
+        public ObservableCollection<Roles> ListaRoles { get; set; } = new ObservableCollection<Roles>();
+        public List<Compra> ListaRegistros { get; set; } = new List<Compra>();
+        public List<Registrocompras> ListaRegistrosCompletos { get; set; } = new();
+        public bool HayDatos { get; set; }=false;
+
+        public ModoVistas Modo { get; set; }
         public ICommand VerRegistrarProductoCommand { get; set; }
         public ICommand RegistrarProductoCommand { get; set; }
         public ICommand VerEliminarProductoCommand { get; set; }
@@ -50,7 +53,8 @@ namespace ProyectoBBDD.ViewModels
         public ICommand RegresarVerUsuariosCommand { get; set; }
         public ICommand CancelarVerUsuarioCommand { get; set; }
         public ICommand CancelarEditarCommand { get; set; }
-        public ICommand VerRegistrosComprasCommand { get;set;}
+        public ICommand VerRegistrosComprasCommand { get; set; }
+        public ICommand VerRegistroDeUsuarioCommand { get; set; }
 
         public AdministradorViewModel()
         {
@@ -67,7 +71,7 @@ namespace ProyectoBBDD.ViewModels
             EditarProductoCommand = new RelayCommand(EditarProducto);
 
             CancelarEditarCommand = new RelayCommand(CancelarEditar);
-            
+
             //Metodos para usuarios
             VerRegistrarUsuarioCommand = new RelayCommand(verRegistrarUsuario);
             RegistrarUsuarioCommand = new RelayCommand(RegistrarUsuario);
@@ -75,12 +79,15 @@ namespace ProyectoBBDD.ViewModels
             EliminarUsuarioCommand = new RelayCommand(EliminarUsuario);
             VerEditarUsuarioCommand = new RelayCommand<int>(VerEditarUsuario);
             EditarUsuarioCommand = new RelayCommand(EditarUsuario);
+            VerRegistroDeUsuarioCommand = new RelayCommand<int>(VerRegistroDeUsuario);
 
             RegresarVerUsuariosCommand = new RelayCommand(RegresarVerUsuarios);
             CancelarVerUsuarioCommand = new RelayCommand(CancelarVerUsuarios);
             //Metodos generales
             CancelarCommand = new RelayCommand(CancelarVerProductos);
-            VerRegistrosComprasCommand=new RelayCommand(VerRegistrosCompras);
+            VerRegistrosComprasCommand = new RelayCommand(VerRegistrosCompras);
+
+            //VerRegistroDeUsuario(5);
 
             CargarRoles();
             CargarUsuarios();
@@ -89,10 +96,35 @@ namespace ProyectoBBDD.ViewModels
             Actualizar();
         }
 
-        private void VerRegistrosCompras()
+        private void VerRegistroDeUsuario(int id)
+        {
+            //Cambiar vista
+            Modo = ModoVistas.VerRegistroPorCliente;
+            //Cargar Datos
+            var temp = usuariosCatalogo.GetUsuarioId(id);
+            ListaRegistrosCompletos.Clear();
+            if (!(temp.Registrocompras.Count == 0))
+            {
+                HayDatos = true;
+                foreach (var item in temp.Registrocompras)
+                {
+                    ListaRegistrosCompletos.Add(item);
+                }
+            }
+            else
+            {
+                HayDatos = false;
+            }
+            Actualizar();
+        }
+        void CargarTodosLosRegistros()
         {
             ListaRegistros.Clear();
             ListaRegistros = registroscatalogo.GetRegistros();
+        }
+        private void VerRegistrosCompras()
+        {
+            CargarTodosLosRegistros();
             Modo = ModoVistas.VerRegistrosCompras;
             Actualizar();
         }
@@ -141,7 +173,7 @@ namespace ProyectoBBDD.ViewModels
         private void VerUsuarios()
         {
             CargarUsuarios();
-            Modo =ModoVistas.VerAdmUsuarios;
+            Modo = ModoVistas.VerAdmUsuarios;
             Actualizar();
         }
 
@@ -183,8 +215,8 @@ namespace ProyectoBBDD.ViewModels
 
         private void VerEditarUsuario(int obj)
         {
-            usuario= usuariosCatalogo.GetUsuarioId(obj);
-            Modo=ModoVistas.VerEditarUsuario;
+            usuario = usuariosCatalogo.GetUsuarioId(obj);
+            Modo = ModoVistas.VerEditarUsuario;
             Actualizar();
         }
 
@@ -193,7 +225,7 @@ namespace ProyectoBBDD.ViewModels
             if (usuario != null)
             {
                 usuariosCatalogo.Eliminar(usuario);
-                Modo=ModoVistas.VerAdministrador;
+                Modo = ModoVistas.VerAdministrador;
                 CargarUsuarios();
                 Actualizar();
             }
@@ -234,8 +266,8 @@ namespace ProyectoBBDD.ViewModels
 
         private void verRegistrarUsuario()
         {
-            usuario=new();
-            Modo=ModoVistas.VerRegistrarUsuario;
+            usuario = new();
+            Modo = ModoVistas.VerRegistrarUsuario;
             Actualizar();
         }
 
@@ -273,14 +305,14 @@ namespace ProyectoBBDD.ViewModels
 
         private void VerEditarProducto(int id)
         {
-            producto= productosCatalogo.GetProductoId(id);
+            producto = productosCatalogo.GetProductoId(id);
             Modo = ModoVistas.VerEditarProducto;
             Actualizar();
         }
 
         private void EliminarProducto()
         {
-            if(producto!=null)
+            if (producto != null)
             {
                 productosCatalogo.Eliminar(producto);
                 CargarProductos();
@@ -292,7 +324,7 @@ namespace ProyectoBBDD.ViewModels
         private void VerEliminarProducto(int id)
         {
             producto = productosCatalogo.GetProductoId(id);
-            Modo=ModoVistas.VerEliminarProducto;
+            Modo = ModoVistas.VerEliminarProducto;
             Actualizar();
         }
 
@@ -325,7 +357,7 @@ namespace ProyectoBBDD.ViewModels
         private void VerRegistrarProducto()
         {
             producto = new();
-            Modo=ModoVistas.VerRegistrarProducto;
+            Modo = ModoVistas.VerRegistrarProducto;
             //Principal.Modo = ModoVistas.VerRegistrarProducto;
             Actualizar();
         }

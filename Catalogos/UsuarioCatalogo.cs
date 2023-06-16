@@ -32,7 +32,7 @@ namespace ProyectoBBDD.Catalogos
         }
         public Usuarios? GetUsuarioId(int id)
         {
-            return context.Usuarios.FirstOrDefault(x => x.Id == id);
+            return context.Usuarios.Include(x=>x.Registrocompras).ThenInclude(y=>y.IdProductoNavigation).FirstOrDefault(x => x.Id == id);
         }
         public Usuarios? GetUsuario(string correo)
         {

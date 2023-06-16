@@ -7,12 +7,15 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <DataGrid ItemsSource="{Binding ListaRegistros}" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Usuario" Binding="{Binding Usuario}" />
-                <DataGridTextColumn Header="Producto" Binding="{Binding Producto}" />
-                <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}" />
-            </DataGrid.Columns>
-        </DataGrid>
+        <ScrollViewer>
+            <DataGrid IsReadOnly="True" ItemsSource="{Binding ListaRegistros}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="*" Header="Usuario" Binding="{Binding Usuario}" />
+                    <DataGridTextColumn Width="*" Header="Producto" Binding="{Binding Producto}" />
+                    <DataGridTextColumn Width="*" Header="Cantidad" Binding="{Binding Cantidad}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+
     </Grid>
 </UserControl>

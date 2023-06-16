@@ -31,7 +31,7 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width=".5*"/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.Resources>
                                         <Style TargetType="TextBlock">
@@ -54,17 +54,35 @@
                                             <Run Text="{Binding IdrolNavigation.Nombre}"/>
                                     </TextBlock>
                                     <!--Columna de botones-->
-                                    <StackPanel Grid.Column="3" Margin="0">
-                                        <Border Padding="3">
-                                            <Button Command="{Binding Source={x:Reference verUsuarios}, Path=DataContext.VerEditarUsuarioCommand}"
+                                    <Grid Grid.Column="3" >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Border Grid.RowSpan="2" Padding="3">
+                                            <Button Height="50" Command="{Binding Source={x:Reference verUsuarios}, Path=DataContext.VerRegistroDeUsuarioCommand}"
+                                                    CommandParameter="{Binding Id}">
+                                                <DockPanel>
+                                                    <TextBlock DockPanel.Dock="Top">Ver registro</TextBlock>
+                                                    <TextBlock>de compras</TextBlock>
+                                                </DockPanel>
+                                            </Button>
+                                        </Border>
+                                        <StackPanel Grid.RowSpan="2" Grid.Column="1" Margin="0">
+                                            <Border Padding="3">
+                                                <Button Command="{Binding Source={x:Reference verUsuarios}, Path=DataContext.VerEditarUsuarioCommand}"
                                                     CommandParameter="{Binding Id}">Editar</Button>
-                                        </Border>
-                                        <Border Padding="3">
-                                            <Button Command="{Binding Source={x:Reference verUsuarios}, Path=DataContext.VerEliminarUsuarioCommand}"
+                                            </Border>
+                                            <Border Padding="3">
+                                                <Button Command="{Binding Source={x:Reference verUsuarios}, Path=DataContext.VerEliminarUsuarioCommand}"
                                                     CommandParameter="{Binding Id}">Eliminar</Button>
-                                        </Border>
-                                    </StackPanel>
-                                    
+                                            </Border>
+                                        </StackPanel>
+                                    </Grid>
                                 </Grid>
                             </Border>
                         </DockPanel>

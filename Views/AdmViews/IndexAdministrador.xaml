@@ -47,10 +47,15 @@
                 <local:EliminarUsuario x:Key="EliminarUsuario"></local:EliminarUsuario>
                 <local:VerAdmUsuarios x:Key="VerAdmUsuarios"></local:VerAdmUsuarios>
                 <local:VerRegistrosCompras x:Key="VerRegistros"></local:VerRegistrosCompras>
+                <local:RegistrosCompraPorCliente x:Key="RegistroPorCliente"></local:RegistrosCompraPorCliente>
             </ContentControl.Resources>
             <ContentControl.Style>
                 <Style TargetType="ContentControl">
                     <Style.Triggers>
+                        <DataTrigger Binding="{Binding Modo}" Value="{x:Static vw:ModoVistas.VerRegistroPorCliente}">
+                            <Setter Property="Content" Value="{StaticResource RegistroPorCliente}"/>
+                        </DataTrigger>
+                        
                         <DataTrigger Binding="{Binding Modo}" Value="{x:Static vw:ModoVistas.VerAdmUsuarios}">
                             <Setter Property="Content" Value="{StaticResource VerAdmUsuarios}"/>
                         </DataTrigger>
