@@ -15,8 +15,6 @@ public partial class TiendaContext : DbContext
     {
     }
 
-    public virtual DbSet<Carrito> Carrito { get; set; }
-
     public virtual DbSet<Productos> Productos { get; set; }
 
     public virtual DbSet<Registrocompras> Registrocompras { get; set; }
@@ -35,31 +33,6 @@ public partial class TiendaContext : DbContext
             .UseCollation("utf8mb4_0900_ai_ci")
             .HasCharSet("utf8mb4");
 
-        modelBuilder.Entity<Carrito>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PRIMARY");
-
-            entity.ToTable("carrito");
-
-            entity.HasIndex(e => e.IdProducto, "fkIdProducto_idx");
-
-            entity.HasIndex(e => e.IdUsuario, "fkIdUsuario_idx");
-
-            entity.Property(e => e.Fecha)
-                .HasDefaultValueSql("CURRENT_TIMESTAMP")
-                .HasColumnType("datetime");
-
-            entity.HasOne(d => d.IdProductoNavigation).WithMany(p => p.Carrito)
-                .HasForeignKey(d => d.IdProducto)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fkIdProducto");
-
-            entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.Carrito)
-                .HasForeignKey(d => d.IdUsuario)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fkIdUsuario");
-        });
-
         modelBuilder.Entity<Productos>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
@@ -72,7 +45,7 @@ public partial class TiendaContext : DbContext
                 .HasColumnType("bit(1)");
             entity.Property(e => e.Imagen).HasColumnType("text");
             entity.Property(e => e.Nombre).HasMaxLength(50);
-            entity.Property(e => e.Precio).HasPrecision(6, 2);
+            entity.Property(e => e.Precio).HasColumnType("double(10,2)");
         });
 
         modelBuilder.Entity<Registrocompras>(entity =>
@@ -87,12 +60,10 @@ public partial class TiendaContext : DbContext
 
             entity.HasOne(d => d.IdProductoNavigation).WithMany(p => p.Registrocompras)
                 .HasForeignKey(d => d.IdProducto)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_Producto_Compra");
 
             entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.Registrocompras)
                 .HasForeignKey(d => d.IdUsuario)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_Usuarios_Compra");
         });
 

@@ -11,7 +11,7 @@ public partial class Productos
 
     public string Nombre { get; set; } = null!;
 
-    public decimal Precio { get; set; }
+    public double Precio { get; set; }
 
     public string Descripcion { get; set; } = null!;
 
@@ -20,8 +20,6 @@ public partial class Productos
     public ulong Estado { get; set; }
 
     public string Imagen { get; set; } = null!;
-
-    public virtual ICollection<Carrito> Carrito { get; set; } = new List<Carrito>();
 
     public virtual ICollection<Registrocompras> Registrocompras { get; set; } = new List<Registrocompras>();
 }
