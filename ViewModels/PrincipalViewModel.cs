@@ -77,6 +77,7 @@ namespace ProyectoBBDD.ViewModels
         {
             Titulo = "Inicio de sesión";
             Usuario = new();
+            ClienteViewModel cli = new() { Modo = ModoVistas.VerCliente };
             Modo = ModoVistas.LoginView;
             Actualizar();
         }
