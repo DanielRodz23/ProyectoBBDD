@@ -49,7 +49,6 @@
                                             <DataTrigger Binding="{Binding Estado}" Value="0">
                                                 <Setter Property="Background" Value="White"/>
                                                 <Setter Property="BorderBrush" Value="Red"/>
-
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>

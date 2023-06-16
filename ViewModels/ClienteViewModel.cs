@@ -56,6 +56,7 @@ namespace ProyectoBBDD.ViewModels
 
         private void verComprarProducto(int obj)
         {
+            Cantidad = 0;
             Productos = productosCatalogo.GetProductoId(obj);
             Modo = ModoVistas.VerComprarProducto;
             Actualizar();
@@ -104,7 +105,7 @@ namespace ProyectoBBDD.ViewModels
 
         private void ComprarProducto(Usuarios obj)
         {
-            Cantidad = 0;
+            //Cantidad = 0;
             Error = "";
             if (Productos != null && Cantidad != 0)
             {

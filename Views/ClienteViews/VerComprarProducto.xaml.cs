@@ -21,23 +21,36 @@ namespace ProyectoBBDD.Views.ClienteViews
     /// </summary>
     public partial class VerComprarProducto : UserControl
     {
+        int stock;
         public VerComprarProducto()
         {
             InitializeComponent();
             NumericUpDownTextBox.Text = "0";
+
         }
+
         private void IncrementButton_Click(object sender, RoutedEventArgs e)
         {
+            stock = int.Parse(txtStock.Text);
             int value = int.Parse(NumericUpDownTextBox.Text);
             value++;
+            if (value > stock)
+            {
+                txtError.Text = "La cantidad comprada será unicamente el stock disponible";
+            }
             NumericUpDownTextBox.Text = value.ToString();
         }
 
         private void DecrementButton_Click(object sender, RoutedEventArgs e)
         {
+            stock = int.Parse(txtStock.Text);
             int value = int.Parse(NumericUpDownTextBox.Text);
             if (value > 0)
                 value--;
+            if (value <= stock)
+            {
+                txtError.Text = "";
+            }
             NumericUpDownTextBox.Text = value.ToString();
         }
 

@@ -27,7 +27,10 @@
             <Run Text="$"/>
             <Run Text="{Binding Productos.Precio}"/>
         </TextBlock>
-        <Label Content="Cantidad:" />
+        <Label>Stock:</Label>
+        <TextBlock x:Name="txtStock" Text="{Binding Productos.Stock}">
+        </TextBlock>
+        <Label Content="Cantidad a comprar:" />
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -42,12 +45,22 @@
             <Button Grid.Column="1" Grid.Row="0" Content="+" Click="IncrementButton_Click" />
         </Grid>
         <!--<TextBlock Text="{Binding Cantidad,UpdateSourceTrigger=PropertyChanged}" x:Name="txtCantidad" Visibility="Collapsed"/>-->
-        <TextBlock Foreground="Red" Text="{Binding Error}"></TextBlock>
+        <TextBlock x:Name="txtError" Foreground="Red" Text="{Binding Error}"></TextBlock>
         <!--<Label>Cantidad:</Label>
         <TextBox Text="{Binding Cantidad}"></TextBox>-->
-        <WrapPanel HorizontalAlignment="Center">
-            <Button Command="{Binding ComprarProductoCommand}" CommandParameter="{Binding DataContext.Usuario, RelativeSource={RelativeSource AncestorType={x:Type vw:PrincipalView}}}" Content="Comprar procesador" Width="200"></Button>
-            <Button Command="{Binding RegresarCommand}">Regresar</Button>
+        <WrapPanel HorizontalAlignment="Center" Margin="50">
+            <WrapPanel.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="Padding" Value="4"/>
+                </Style>
+            </WrapPanel.Resources>
+            <Border>
+                <Button Command="{Binding ComprarProductoCommand}" CommandParameter="{Binding DataContext.Usuario, RelativeSource={RelativeSource AncestorType={x:Type vw:PrincipalView}}}" Content="Comprar procesador" Width="200"></Button>
+            </Border>
+            <Border Margin="30,0,0,0">
+
+                <Button Command="{Binding RegresarCommand}">Regresar</Button>
+            </Border>
         </WrapPanel>
     </StackPanel>
 </UserControl>
