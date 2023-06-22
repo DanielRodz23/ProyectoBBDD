@@ -23,9 +23,13 @@ public partial class TiendaContext : DbContext
 
     public virtual DbSet<Usuarios> Usuarios { get; set; }
 
+    string CadenaConexion = "server = 26.252.149.4;user = ProyePINDAN; password = PROYEPINDAN$123; database = Tienda";
+    // string CadenaConexion = "server = localhost;user = root; password = root; database = Tienda";
+
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("server = 26.252.149.4;user = ProyePINDAN; password = PROYEPINDAN$123; database = Tienda", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.29-mysql"));
+        => optionsBuilder.UseMySql(CadenaConexion, Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.29-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
